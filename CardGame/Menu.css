@@ -1,62 +1,77 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
 body {
-    background-color: rgba(174, 184, 92, 0.514);
+    background: url("menu_background.jpg");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    object-fit: cover;
+    flex-direction: column;
 }
 
 
-.Menu{
+.menu{
     text-align: center;
 }
 
-.Buttons{
+.button {
     text-align: center;
-}
-
-
-.button1{
-    background-color: #1b59a0;  
-    border: none;
-    color: rgb(0, 0, 0);
-    padding: 15px 32px;
-    text-align: center;
-    margin-bottom: 15px;
+    position: relative;
+    color: #ffff;
     text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    width: 200px;
-}
-.button2{
-    background-color: #98c2bc;  
+    text-transform: uppercase;
+    font-size: 1.5em;
+    letter-spacing: 0.1em;
+    padding: 10px 30px;
+    margin-bottom: 10px;
+    transition: 0.5s;
     border: none;
-    color: rgb(3, 0, 0);
-    padding: 15px 32px;
-    text-align: center;
-    margin-bottom: 15px;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    width: 200px;
+    width: 10em;
 }
-.button3{
-    background-color: #6fe62b;  
-    border: none;
-    color: rgb(0, 0, 0);
-    padding: 15px 32px;
-    text-align: center;
-    margin-bottom: 15px;
+.button a {
     text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    width: 200px;
+    color: black;
 }
-.button4{
-    background-color: #b91a1a;  
-    border: none;
-    color: rgb(0, 0, 0);
-    padding: 15px 32px;
-    text-align: center;
-    margin-bottom: 15px;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    width: 200px;
+.button.water:hover {
+    background: #1b59a0;
+    box-shadow: 0 0 35px #1b59a0;
+}
+.button.water:hover a {
+    color: #fff;
+}
+.button.air:hover {
+    background: #98c2bc;
+    box-shadow: 0 0 35px #98c2bc;
+}
+.button.air:hover a {
+    color: #fff;
+}
+.button.earth:hover{
+    background: #6fe62b;
+    box-shadow: 0 0 35px #6fe62b;
+}
+.button.earth:hover a {
+    color: #fff;
+}
+.button.fire:hover {
+    background: #b91a1a;
+    box-shadow: 0 0 35px #b91a1a;
+}
+.button.fire:hover a {
+    color: #fff;
+}
+.button:before {
+    content: '';
+    position: absolute;
+    inset: 2px;
+}
+button span {
+    position: relative;
+    z-index: 1;
 }
