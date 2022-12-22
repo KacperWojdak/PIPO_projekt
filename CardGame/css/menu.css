@@ -15,8 +15,15 @@ body {
     align-items: center;
     flex-direction: column;
 }
+@font-face {
+    font-family: 'ava';
+    src: url(Fonts/ava.ttf);
+}
 
-
+h1{
+    font-family:'ava', ;
+    font-size: 30px;
+}
 .menu{
     text-align: center;
 }
