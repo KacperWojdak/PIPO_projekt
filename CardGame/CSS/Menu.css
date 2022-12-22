@@ -1,0 +1,62 @@
+body {
+    background-color: rgba(174, 184, 92, 0.514);
+}
+
+
+.Menu{
+    text-align: center;
+}
+
+.Buttons{
+    text-align: center;
+}
+
+
+.button1{
+    background-color: #1b59a0;  
+    border: none;
+    color: rgb(0, 0, 0);
+    padding: 15px 32px;
+    text-align: center;
+    margin-bottom: 15px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 200px;
+}
+.button2{
+    background-color: #98c2bc;  
+    border: none;
+    color: rgb(3, 0, 0);
+    padding: 15px 32px;
+    text-align: center;
+    margin-bottom: 15px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 200px;
+}
+.button3{
+    background-color: #6fe62b;  
+    border: none;
+    color: rgb(0, 0, 0);
+    padding: 15px 32px;
+    text-align: center;
+    margin-bottom: 15px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 200px;
+}
+.button4{
+    background-color: #b91a1a;  
+    border: none;
+    color: rgb(0, 0, 0);
+    padding: 15px 32px;
+    text-align: center;
+    margin-bottom: 15px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 200px;
+}
