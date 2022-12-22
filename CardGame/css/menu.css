@@ -8,10 +8,11 @@
 
 body {
     background: url("images/menu_background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
-    object-fit: cover;
     flex-direction: column;
 }
 
