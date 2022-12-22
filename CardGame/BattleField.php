@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" href="CSS/Battlefiled.css" type="text/css">
+    <link rel="stylesheet" href="css/battlefield.css" type="text/css">
     <title>Fight</title>
 </head>
 
