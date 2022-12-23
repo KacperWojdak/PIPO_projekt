@@ -8,13 +8,13 @@
 <body>
     <div class="menu">
             <div class="You">
-                <img src="css/images/Waterbander.jpg" style="width: 300px; height:400px;float:left;">
+                <img src="css/images/Water_Bender_character.png" style="width: 450px; height:450px;float:left;">
             </div>
             <div class="VS" style="width: 300px; height:400px;float:left;">
                 <p>VS</p>
             </div>
             <div class="Enemy">
-                <img src="css/images/FireBander.jpg"style="width: 300px; height:400px;float:left;">
+                <img src="css/images/FireBender.jpg"style="width: 450px; height:450px;float:left;">
                 <div style="clear:both;"></div>
 
             </div>

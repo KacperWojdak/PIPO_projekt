@@ -11,7 +11,7 @@
         <h1>Play VS :</h1>
     </div>
              <div class="You">
-                <img src="css/images/Waterbander.jpg" style="width: 300px; height:400px;float:left;">
+                <img src="CSS\images\Water_Bender_character.png" style="width: 450px; height:450px; float:left;">
             </div>
 
     <div class="buttons">
