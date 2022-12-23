@@ -88,3 +88,26 @@ button span {
 .Enemy{
     display: inline-block;
 }
+.button.nor:hover {
+    transform: scale(1.3);
+    z-index:2;
+}
+
+.button.Start::before {
+    text-align: center;
+    position:relative;
+    color: #ffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1.5em;
+    letter-spacing: 0.1em;
+    padding: 10px 30px;
+    margin-bottom: 15px;
+    transition: 1s;
+    display: flex;
+    width: 10em;
+}
+.button.Start:hover {
+    transform: scale(1.3);
+    z-index:2;
+}
