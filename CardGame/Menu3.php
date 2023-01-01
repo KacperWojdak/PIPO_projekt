@@ -14,7 +14,7 @@
                 <p>VS</p>
             </div>
             <div class="Enemy">
-                <img src="css/images/FireBender.jpg"style="width: 450px; height:450px;float:left;">
+                <img src="css/images/Fire_Bender_character.png"style="width: 450px; height:450px;float:left;">
                 <div style="clear:both;"></div>
 
             </div>
