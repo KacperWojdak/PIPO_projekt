@@ -3,11 +3,7 @@
 namespace CardGame\MainCards;
 
 class PlayerCardFire extends MainCard {
-        private $deck;
+    private $deck;
+}
 
-       
-
-    }
-
-
-    ?>
+?>

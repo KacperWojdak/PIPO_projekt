@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" href="css/menu.css" type="text/css">
-    <title>Menu</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/mainMenu.css" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet'>
+    <title>Main Menu</title>
 </head>
 
 
 <body>
-    <div class="menu">
-        <h1>MENU</h1>
+    <div class="container">
+        <div class="menu">
+            <h1>Main Menu</h1>
+        </div>
+        <div class="action_buttons">
+            <button><a href="playerDeck.php">Play</a></button>
+            <button><a href="decks.php">Decks</a></button>
+            <button><a href="pusty.php">Pusty guzik</a></button>
+            <button><a href="pusty.php">Pusty guzik</a></button>
+        </div>
     </div>
-
-    <div class="buttons">
-
-        <button class="button Play"><a href="Menu1.php"><span>Play</span></a></button><br>
-        <button class="button Deck"><a href="Deck.php"><span>Decks</span></a></button><br>
-        <button class="button Tutorial"><a href="Tutorial.php"><span>Tutorial</span></a></button><br>
-        <button class="button Settings"><a href="Settings.php"><span>Settings</span></a></button><br>
-        
-    </div>
-    
 </body>
 
 

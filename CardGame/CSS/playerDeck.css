@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Aclonica';
+}
+h3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    font-weight: bold;
+    color: #000;
+}
+.element {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+    min-height: 95vh;
+}
+.face {
+    position: absolute;
+    display: flex;
+    top: 10%;
+}
+.face li {
+    list-style: none;
+}
+.face li::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    font-size: 10vw;
+    transform: translate(-50%, calc(-50% + 120px));
+    pointer-events: none;
+    font-weight: 700;
+    transition: 0.5s;
+    opacity: 0;
+}
+.face li:hover::before {
+    opacity: 0.2;
+    transform: translate(-50%, calc(-50% + 150px));
+}
+.face li a {
+    position: relative;
+    display: inline-block;
+    width: 250px;
+    height: 250px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    border-radius: 10px;
+    text-decoration: none;
+    margin: 20px;
+    perspective: 300px;
+    box-shadow: 0 25px 35px rgba(0, 0, 0, 0.1);
+    transition: background 0.25s;
+}
+.face li a img {
+    width: 250px;
+    height: 250px;
+}
+.js-tilt-glare {
+    border-radius: 10px;
+}
+.face li a.fire {
+    background: #82131347;
+}
+.face li a.water {
+    background: #123e7145;
+}
+.face li a.air {
+    background: #9bb3afc0;
+}
+.face li a.earth {
+    background: #53aa2090;
+}
+.face li a  {
+    transition: 0.25s;
+}

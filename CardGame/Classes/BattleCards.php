@@ -2,8 +2,6 @@
 
 namespace CardGame\Classes;
 
-
-
     class Deck {
         protected $ListOfCard;
         protected $Card;
@@ -20,7 +18,4 @@ namespace CardGame\Classes;
             }  
         }
     }
-
-
-
 ?>
