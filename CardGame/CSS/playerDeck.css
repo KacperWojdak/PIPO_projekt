@@ -64,6 +64,10 @@
     box-shadow: 0 25px 35px rgba(0, 0, 0, 0.1);
     transition: background 0.25s;
 }
+.face li a:hover {
+    width: 300px;
+    height: 300px;
+}
 .face li a img {
     width: 250px;
     height: 250px;
@@ -73,15 +77,19 @@
 }
 .face li a.fire {
     background: #82131347;
+    border: 1px solid #821313be;
 }
 .face li a.water {
     background: #123e7145;
+    border: 1px solid #123e71b9;
 }
 .face li a.air {
     background: #9bb3afc0;
+    border: 1px solid #9bb3aff1;
 }
 .face li a.earth {
     background: #53aa2090;
+    border: 1px solid #53aa20e9;
 }
 .face li a  {
     transition: 0.25s;

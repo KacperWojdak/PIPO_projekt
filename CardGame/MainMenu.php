@@ -16,8 +16,7 @@
         <div class="action_buttons">
             <button><a href="playerDeck.php">Play</a></button>
             <button><a href="decks.php">Decks</a></button>
-            <button><a href="pusty.php">Pusty guzik</a></button>
-            <button><a href="pusty.php">Pusty guzik</a></button>
+            <button><a href="tutorial.php">Tutorial</a></button>
         </div>
     </div>
 </body>
