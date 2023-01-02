@@ -6,35 +6,21 @@
 
 
 <body>
-    <div class="fight">
-        <h1>Fight</h1>
-    </div>
 
     <?php
+
+use CardGame\Classes\Board\Board;
+use CardGame\MainCards\PlayerCardFire;
+use CardGame\MainCards\PlayerCardWater;
+use CardGame\MainCards\PlayerCardAir;
+use CardGame\MainCards\PlayerCardEarth;
+
+        $you=new PlayerCardWater;
+        $notyou= new PlayerCardFire;
+        $board= new Board($you,$notyou);
+
+
     
-    class NPC {
-        private $HP=15;
-
-    }
-
-    class Deck {
-        protected $ListOfCard;
-        protected $Card;
-
-        public function __construct($Card) {
-            $this->Card = $Card;
-        }
-
-        public function shuffleCards() {
-            shuffle($this->Card);
-        }
-
-        public function ReadylistCards() {
-            foreach($this->Card as $Card) {
-                echo $Card . '<br />';
-            }  
-        }
-    }
     ?>
 
 </body>

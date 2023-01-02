@@ -1,6 +1,6 @@
 <?php
 
-namespace CardGame\Classes;
+namespace CardGame\Classes\Deck;
 
     class Deck {
         protected $ListOfCard;

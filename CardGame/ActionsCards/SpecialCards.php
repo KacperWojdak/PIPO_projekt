@@ -2,9 +2,12 @@
 
 namespace CardGame\ActionsCards\SpecialCards;
 
-class SpecialCards  {
-    private $EnergyCost = 1;
-    private $Name;
+use CardGame\Classes\Card\Card;
+
+class SpecialCards extends Card {
+    private $type="Special";
+    
+   
 
     
 

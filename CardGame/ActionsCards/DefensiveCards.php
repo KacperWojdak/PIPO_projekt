@@ -2,11 +2,14 @@
 
 namespace CardGame\ActionsCards\DefensiveCards;
 
-class DefensiveCards  {
-    private $EnergyCost = 1;
-    private $Name;
+use CardGame\Classes\Card\Card;
 
-    
+class DefensiveCards extends Card  {
+    private $type="Defensive";
+
+
+   
+   
 
 }
 
