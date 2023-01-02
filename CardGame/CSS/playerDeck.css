@@ -26,7 +26,7 @@
 .face {
     position: absolute;
     display: flex;
-    top: 10%;
+    top: 15%;
 }
 .face li {
     list-style: none;
@@ -64,17 +64,14 @@
     box-shadow: 0 25px 35px rgba(0, 0, 0, 0.1);
     transition: background 0.25s;
 }
-.face li a:hover {
-    width: 300px;
-    height: 300px;
+.face li a:hover img {
+    transition: 0.5s;
+    width: 350px;
+    height: 350px;
 }
 .face li a img {
     width: 250px;
     height: 250px;
-}
-.face li a:hover img {
-    width: 400px;
-    height: 400px;
 }
 .js-tilt-glare {
     border-radius: 10px;
