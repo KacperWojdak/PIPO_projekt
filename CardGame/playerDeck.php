@@ -6,7 +6,9 @@
 <link href='https://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet'>
 </head>
 <body>
-    <h3 class="top">Choose your deck:</h3>
+    <div class="top">
+        <h3>Choose your deck:</h3>
+    </div>
     <div class="element">
         <ul class="face">
             <li data-text="FireBender" data-color="#b91a1a">
