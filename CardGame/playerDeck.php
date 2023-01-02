@@ -36,7 +36,7 @@
                 bg.style.backgroundColor = color;
             })
             elements.addEventListener('mouseleave', function(event) {
-                bg.style.backgroundColor = '#ffe4c4';
+                bg.style.backgroundColor = '#b89d7d';
             })
         })
     </script>
