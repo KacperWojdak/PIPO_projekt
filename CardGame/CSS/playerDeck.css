@@ -17,6 +17,7 @@
     border-bottom: 2px solid black;
 }
 .element {
+    background-color: #ffe4c4;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -79,7 +80,7 @@
 }
 .face li a.fire {
     background: #82131347;
-    border: 1px solid #821313be;
+    border: 1px solid #825413be;
 }
 .face li a.water {
     background: #123e7145;
