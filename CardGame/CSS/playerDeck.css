@@ -66,10 +66,11 @@
 }
 .face li a:hover img {
     transition: 0.5s;
-    width: 350px;
-    height: 350px;
+    width: 300px;
+    height: 300px;
 }
 .face li a img {
+    position: absolute;
     width: 250px;
     height: 250px;
 }
