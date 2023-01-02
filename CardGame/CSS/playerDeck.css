@@ -11,6 +11,7 @@ h3 {
     font-size: 40px;
     font-weight: bold;
     color: #000;
+    border-bottom: 2px solid black;
 }
 .element {
     display: flex;
@@ -40,7 +41,7 @@ h3 {
     opacity: 0;
 }
 .face li:hover::before {
-    opacity: 0.2;
+    opacity: 0.6;
     transform: translate(-50%, calc(-50% + 150px));
 }
 .face li a {
