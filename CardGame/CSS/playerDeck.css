@@ -72,6 +72,10 @@
     width: 250px;
     height: 250px;
 }
+.face li a:hover img {
+    width: 270px;
+    height: 270px;
+}
 .js-tilt-glare {
     border-radius: 10px;
 }
