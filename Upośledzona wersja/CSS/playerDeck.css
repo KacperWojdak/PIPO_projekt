@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Aclonica';
+}
+.top {
+    background-color: black;
+}
+.top h3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    font-weight: bold;
+    color: #fff;
+    border-bottom: 2px solid black;
+}
+.element {
+    background-color: #ffe4c4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+    min-height: 95vh;
+}
+.face {
+    position: absolute;
+    display: flex;
+    top: 15%;
+}
+.face li {
+    list-style: none;
+}
+.face li::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    font-size: 10vw;
+    transform: translate(-50%, calc(-50% + 120px));
+    pointer-events: none;
+    font-weight: 700;
+    transition: 0.5s;
+    opacity: 0;
+}
+.face li:hover::before {
+    opacity: 0.6;
+    transform: translate(-50%, calc(-50% + 150px));
+}
+.face li a {
+    position: relative;
+    display: inline-block;
+    width: 250px;
+    height: 250px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    border-radius: 10px;
+    text-decoration: none;
+    margin: 20px;
+    perspective: 300px;
+    box-shadow: 0 25px 35px rgba(0, 0, 0, 0.1);
+    transition: background 0.25s;
+}
+.face li a:hover img {
+    transition: 0.5s;
+    width: 300px;
+    height: 300px;
+}
+.face li a img {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+}
+.js-tilt-glare {
+    border-radius: 10px;
+}
+.face li a.fire {
+    background: #82131347;
+    border: 1px solid #825413be;
+}
+.face li a.water {
+    background: #123e7145;
+    border: 1px solid #123e71b9;
+}
+.face li a.air {
+    background: #9bb3afc0;
+    border: 1px solid #9bb3aff1;
+}
+.face li a.earth {
+    background: #53aa2090;
+    border: 1px solid #53aa20e9;
+}
+.face li a  {
+    transition: 0.25s;
+}
