@@ -15,6 +15,10 @@ class PlayerCardFire extends MainCard implements PlayerInterface{
         }
         
     }
+
+    public function GetDeck(){
+
+    }
 }
 
 

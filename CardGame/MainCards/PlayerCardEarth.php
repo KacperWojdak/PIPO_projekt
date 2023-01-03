@@ -10,6 +10,7 @@ class PlayerCardEarth extends MainCard implements PlayerInterface{
     public function GetPassive(): int{
         return 1;  
     }
+
     }
 
 

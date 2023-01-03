@@ -15,6 +15,10 @@ class PlayerCardWater extends MainCard implements PlayerInterface {
         }
         
     }
+
+    public function GetDeck(){
+
+    }
     }
 
 

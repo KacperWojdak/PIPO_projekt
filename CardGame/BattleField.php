@@ -18,9 +18,12 @@ use CardGame\MainCards\PlayerCardEarth;
         $you=new PlayerCardWater;
         $notyou= new PlayerCardFire;
         $board= new Board($you,$notyou);
+        do{
+            $board->PlayTurn();
+        }while(!false)
+      
 
 
-    
     ?>
 
 </body>

@@ -9,6 +9,12 @@ class MainCard{
     public function CardGame(MainCard $deck){
         $this->deck=$deck;
     }
+    public function GetHp(){
+        return $this->HP;
+    }
+    public function  ChangeHP(int $mod){
+         $this->HP-=$mod;
+    }
 
 }
 
