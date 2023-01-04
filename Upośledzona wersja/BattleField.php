@@ -16,11 +16,14 @@ class WinnerWasCalled extends Exception{}
 
 /////////////////////////////////////////////////         MAIN CARDS             //////////////////////////////////////////////////////////////
 
-class MainCard{ 
+class MainCard implements PlayerInterface{ 
     private int $HP=40;
     private int $DEF=0;
     private Deck $deck;
 
+    public function GetPassive(): int{
+        return 1;
+    }
     public function GetDeck(Deck $deck){
         $this->deck=$deck;
     }
@@ -126,8 +129,7 @@ class PlayerCardWater extends MainCard implements PlayerInterface {
 
     
     
-
-    class Board {
+    class Board  {
         protected MainCard $Player;
         protected MainCard $Enemy;
         protected $Mana=1;
@@ -154,11 +156,20 @@ class PlayerCardWater extends MainCard implements PlayerInterface {
             if($this->Mana <10){
                 $this->Mana++;
             };
-            do{
-                $this->Player->ChangeDEF(5);
-                $this->Enemy->ChangeDEF(1);
+            $player=$this->Player;
+            if($player->GetPassive()==1){
+                $this->Player->ChangeHP(-2);
+            }
+
+            do{ 
                 $attackE=2;
                 $attackP=4;
+                $enemy=$this->Enemy;
+                if($enemy->GetPassive()==1){
+                    $attackE=$attackE*2;
+                }
+                $this->Player->ChangeDEF(3);
+                $this->Enemy->ChangeDEF(1);
                 if($this->Enemy->GetDEF()>0){
                     $dmgP=$attackP-$this->Enemy->GetDEF();
                     if($dmgP<=0){
@@ -237,7 +248,7 @@ class PlayerCardWater extends MainCard implements PlayerInterface {
         
        }
        public function Pass(){
-        
+
        }
         
     
