@@ -2,12 +2,12 @@
 <head>
 <meta charset="utf-8">
 <title>Player Deck</title>
-<link rel="stylesheet" href="CSS/playerDeck.css">
+<link rel="stylesheet" href="CSS/enemyDeck.css">
 <link href='https://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet'>
 </head>
 <body>
     <div class="topic">
-        <h3>Choose your deck:</h3>
+        <h3>Choose Enemy deck:</h3>
     </div>
     <div class="container">
         <div class="card">
@@ -57,8 +57,8 @@
      </div>
 
      <div class="buttonContainer">
-        <div class="buttonLeft"><a href="mainMenu.php"><button>Go Back</button></a></div>
-        <div class="buttonRight"><a href="enemyDeck.php"><button>Go Next</button></a></div>
+     <div class="buttonLeft"><a href="playerDeck.php"><button>Go Back</button></a></div>
+        <div class="buttonRight"><a href="battleField.php"><button>FIGHT</button></a></div>
      </div>
      
 
