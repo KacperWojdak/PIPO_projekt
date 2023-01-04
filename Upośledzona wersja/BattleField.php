@@ -159,6 +159,7 @@ class PlayerCardWater extends MainCard implements PlayerInterface {
             $player=$this->Player;
             if($player->GetPassive()==1){
                 $this->Player->ChangeHP(-2);
+                log::info("Wyleczono maga wody o 2 punkty zdrowia");
             }
 
             do{ 
@@ -167,6 +168,7 @@ class PlayerCardWater extends MainCard implements PlayerInterface {
                 $enemy=$this->Enemy;
                 if($enemy->GetPassive()==1){
                     $attackE=$attackE*2;
+                    log::info("Trafenie Krtyczne");
                 }
                 $this->Player->ChangeDEF(3);
                 $this->Enemy->ChangeDEF(1);
