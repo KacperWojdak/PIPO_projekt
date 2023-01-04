@@ -17,19 +17,25 @@ class WinnerWasCalled extends Exception{}
 /////////////////////////////////////////////////         MAIN CARDS             //////////////////////////////////////////////////////////////
 class MainCard{ 
     private int $HP=40;
+    private int $DEF=0;
     private $deck;
-    private  $name;
+
     public function CardGame(MainCard $deck){
         $this->deck=$deck;
     }
+
     public function GetHp(){
         return $this->HP;
     }
-    public function GetName(){
-        return $this->name;
-    }
     public function  ChangeHP(int $mod){
          $this->HP=$this->HP-$mod;
+    }
+    
+    public function GetDEF(){
+        return $this->DEF;
+    }
+    public function ChangeDEF(int $def){
+        $this->DEF=$this->DEF+$def;
     }
 
 }
@@ -43,7 +49,6 @@ interface PlayerInterface {
 
 }
 class PlayerCardFire extends MainCard implements PlayerInterface{
-    private $name="Fire";
     public function GetPassive(): int{
     
         $random=random_int(1,10);
@@ -62,7 +67,6 @@ class PlayerCardFire extends MainCard implements PlayerInterface{
 }
 
 class PlayerCardWater extends MainCard implements PlayerInterface {
-    private $name="Water";
     public function GetPassive(): int{
         
         $random=random_int(1,10);
@@ -127,7 +131,7 @@ class PlayerCardWater extends MainCard implements PlayerInterface {
     class Board {
         protected MainCard $Player;
         protected MainCard $Enemy;
-        protected $Mana=0;
+        protected $Mana=1;
         protected $TurnCounter=0;
         protected $winner;
 
@@ -146,19 +150,44 @@ class PlayerCardWater extends MainCard implements PlayerInterface {
             Log::info();
             $this->TurnCounter++;
             Log::info("Trwa Tura:  $this->TurnCounter") ;
+            Log::info("Mana wynosi:  $this->Mana") ;
             $i=0;
-            if($this->Mana <=10){
+            if($this->Mana <10){
                 $this->Mana++;
             };
             do{
-                $this->Enemy->ChangeHP(4);
-                $this->Player->ChangeHP(1);
+                $this->Player->ChangeDEF(5);
+                $this->Enemy->ChangeDEF(1);
+                $attackE=2;
+                $attackP=4;
+                if($this->Enemy->GetDEF()>0){
+                    $dmgP=$attackP-$this->Enemy->GetDEF();
+                    if($dmgP<=0){
+                        $this->Enemy->ChangeDEF(-($attackP));
+                        $dmgP=0;
+                    }
+                    if($dmgP>0){
+                        $this->Enemy->ChangeDEF(-($attackP-$dmgP));
+                    }
+                }
+                if($this->Player->GetDEF()>0){
+                    $dmgE=$attackE-$this->Player->GetDEF();
+                    if($dmgE<=0){
+                        $this->Player->ChangeDEF(-($attackE));
+                        $dmgE=0;
+                    }
+                    if($dmgE>0){
+                        $this->Player->ChangeDEF(-($attackE-$dmgE));
+                    }
+                }
+                $this->Enemy->ChangeHP($dmgP);
+                $this->Player->ChangeHP($dmgE);
                 $i++;
             }while($i!=1);
             $eHP=$this->Enemy->GetHp();
             $pHP=$this->Player->GetHp();
-            Log::info("Twoje życie wynosi:  $pHP") ;
-            Log::info("Życie twojego przeciwnika wynosi:  $eHP") ;
+            Log::info("Twoje życie wynosi:  $pHP , A twój DEF: ".$this->Player->GetDEF()) ;
+            Log::info("Życie twojego przeciwnika wynosi:  $eHP, A jego DEF: ".$this->Enemy->GetDEF()) ;
             if($eHP<=0 || $pHP<=0){
                 if($eHP>$pHP){
                 $this->winner = "Przeciwnik";
