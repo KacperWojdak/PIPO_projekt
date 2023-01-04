@@ -33,7 +33,7 @@ body {
     position: relative;
     width: 300px;
     height: 420px;
-    background: #cfcfcf94;
+    background: #9d948db4;
     margin: 20px;
     border-radius: 20px;
     overflow: hidden;
@@ -78,14 +78,14 @@ body {
     text-align: center;
 }
 .container .card .content p {
-    color: #fff;
+    color: #4c3009a4;
 }
 .container .card .content button {
     position: relative;
     display: inline-block;
     padding: 10px 20px;
     background: #000;
-    color: #fff;
+    color: #030200;
     border-radius: 40px;
     text-decoration: none;
     margin-top: 20px;
