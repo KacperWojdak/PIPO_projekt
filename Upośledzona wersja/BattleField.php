@@ -12,15 +12,16 @@ final class Log {
     }
 }
 
-
 class WinnerWasCalled extends Exception{}
+
 /////////////////////////////////////////////////         MAIN CARDS             //////////////////////////////////////////////////////////////
+
 class MainCard{ 
     private int $HP=40;
     private int $DEF=0;
-    private $deck;
+    private Deck $deck;
 
-    public function CardGame(MainCard $deck){
+    public function GetDeck(Deck $deck){
         $this->deck=$deck;
     }
 
@@ -61,9 +62,8 @@ class PlayerCardFire extends MainCard implements PlayerInterface{
         
     }
 
-    public function GetDeck(){
 
-    }
+
 }
 
 class PlayerCardWater extends MainCard implements PlayerInterface {
@@ -79,16 +79,14 @@ class PlayerCardWater extends MainCard implements PlayerInterface {
         
     }
 
-    public function GetDeck(){
-
-    }
     }
 /////////////////////////////////////////////////         CLASSES        /////////////////////////////////////////////////
     abstract class Card {
         private $NameOfCard;
         private $EnergyCost=0;
         private $type="";
-        private $Decription="";
+        private $Decription;
+        private $Capacity;
        
         public function getCardName() {
             return $this->NameOfCard;
@@ -97,11 +95,12 @@ class PlayerCardWater extends MainCard implements PlayerInterface {
             echo $this->type;
         }
 
-        public function __construct(int $energycost, string $nameofcard, string $decription)
+        public function __construct(int $energycost, string $nameofcard, int $decription,int $capacity)
     {
         $this->EnergyCost=$energycost;
         $this->NameOfCard=$nameofcard;
         $this->Decription=$decription;
+        $this->Capacity=$capacity;
     }
 
     
@@ -110,9 +109,9 @@ class PlayerCardWater extends MainCard implements PlayerInterface {
 
     class Deck {
         protected $ListOfCard;
-        protected $Card;
+        protected Card $Card;
 
-        public function __construct($Card) {
+        public function AddCard($Card) {
             $this->Card = $Card;
             shuffle($this->Card);
         }
@@ -208,14 +207,19 @@ class PlayerCardWater extends MainCard implements PlayerInterface {
         private $type="Defensive";
     
     
-       
+       public function AddDef(){
+       }
+       public function AddHP(){
+    }
        
     
     }
     class OffensiveCards extends Card {
         private $type="Offensive";
         
-     
+        public function AttackDMG(){
+
+        }
         
     }
 
@@ -223,8 +227,18 @@ class PlayerCardWater extends MainCard implements PlayerInterface {
     class SpecialCards extends Card {
         private $type="Special";
         
-       
-    
+       public function DrawCard(){
+
+       }
+       public function Nothing(){
+        
+       }
+       public function RegenMana(){
+        
+       }
+       public function Pass(){
+        
+       }
         
     
     }
