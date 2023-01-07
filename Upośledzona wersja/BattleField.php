@@ -2,7 +2,9 @@
 
 namespace Battle;
 
+use Battle\OffensiveCards as BattleOffensiveCards;
 use Exception;
+use mysqli;
 
 /////////////////////////////////////////       INNE                  ////////////////////////////////////////////////////////////
 final class Log {
@@ -16,7 +18,7 @@ class WinnerWasCalled extends Exception{}
 
 /////////////////////////////////////////////////         MAIN CARDS             //////////////////////////////////////////////////////////////
 
-class MainCard implements PlayerInterface{ 
+class MainCard { 
     private int $HP=40;
     private int $DEF=0;
     private Deck $deck;
@@ -45,14 +47,8 @@ class MainCard implements PlayerInterface{
 }
 
 
-interface PlayerInterface {
 
-	public function GetPassive(): int;
-
-
-
-}
-class PlayerCardFire extends MainCard implements PlayerInterface{
+class PlayerCardFire extends MainCard implements Player {
     public function GetPassive(): int{
     
         $random=random_int(1,10);
@@ -64,12 +60,15 @@ class PlayerCardFire extends MainCard implements PlayerInterface{
         }
         
     }
-
+    public function GetPlayerType(): string
+    {
+        return "Fire";
+    }
 
 
 }
 
-class PlayerCardWater extends MainCard implements PlayerInterface {
+class PlayerCardWater extends MainCard implements Player {
     public function GetPassive(): int{
         
         $random=random_int(1,10);
@@ -79,16 +78,26 @@ class PlayerCardWater extends MainCard implements PlayerInterface {
         if($random<8){
             return 0;
         }
-        
+    }
+    public function GetPlayerType(): string
+    {
+        return "Water";
     }
 
     }
+/////////////////////////////////////////////////////       Interface       ///////////////////////////////////////////////
+interface Player{
+    public function GetPlayerType():string;
+
+}
+
+
 /////////////////////////////////////////////////         CLASSES        /////////////////////////////////////////////////
     abstract class Card {
         private $NameOfCard;
         private $EnergyCost=0;
         private $type="";
-        private $Decription;
+        private $Value;
         private $Capacity;
        
         public function getCardName() {
@@ -97,28 +106,110 @@ class PlayerCardWater extends MainCard implements PlayerInterface {
         public function WhatTypeIsIT() {
             echo $this->type;
         }
+        public function getEnergyCost(){
+            return $this->EnergyCost;
+        }
+        public function getCapacity(){
+            return $this->Capacity;
+        }
+        public function getValue(){
+            return $this->Value;
+        }
+
+
 
         public function __construct(int $energycost, string $nameofcard, int $decription,int $capacity)
     {
         $this->EnergyCost=$energycost;
         $this->NameOfCard=$nameofcard;
-        $this->Decription=$decription;
+        $this->Value=$decription;
         $this->Capacity=$capacity;
     }
 
     
 
     }
-
+ 
     class Deck {
-        protected $ListOfCard;
+        protected $ListOfCard=[];
         protected Card $Card;
+        protected $Type;
 
-        public function AddCard($Card) {
-            $this->Card = $Card;
-            shuffle($this->Card);
+        public function __construct(string $type)
+        {
+            $this->Type=$type;
         }
 
+        public function CreatDeck(){
+            if($this->Type=='Fire'){
+            $deck_conections=mysqli_connect('localhost','root','','cards');
+            $test='SELECT * FROM fireattack';
+            $wynik=mysqli_query($deck_conections,$test);
+
+            while ($row = mysqli_fetch_assoc($wynik)) {
+            $card=new OffensiveCards($row["EnergyCost"], $row["Name"], $row["Decsription"], $row["Effect"]);
+            $this->AddCard($card);
+            }
+
+            /////////
+            $test='SELECT * FROM firedeff';
+            $wynik=mysqli_query($deck_conections,$test);
+
+            while ($row = mysqli_fetch_assoc($wynik)) {
+            $card=new DefensiveCards($row["EnergyCost"], $row["Name"], $row["Decsription"], $row["Effect"]);
+            $this->AddCard($card);
+            }
+            ///////
+            $test='SELECT * FROM firespecial';
+            $wynik=mysqli_query($deck_conections,$test);
+
+            while ($row = mysqli_fetch_assoc($wynik)) {
+            $card=new SpecialCards($row["EnergyCost"], $row["Name"], $row["Decsription"], $row["Effect"]);
+            $this->AddCard($card);
+            }
+            foreach($this->ListOfCard as $cardname){
+                echo $cardname->getCardName();
+                log::info();
+            }
+            }
+            if($this->Type=='Water'){
+                $deck_conections=mysqli_connect('localhost','root','','cards');
+                $test='SELECT * FROM waterattack';
+                $wynik=mysqli_query($deck_conections,$test);
+    
+                while ($row = mysqli_fetch_assoc($wynik)) {
+                $card=new OffensiveCards($row["EnergyCost"], $row["Name"], $row["Decsription"], $row["Effect"]);
+                $this->AddCard($card);
+                }
+    
+                /////////
+                $test='SELECT * FROM waterdeff';
+                $wynik=mysqli_query($deck_conections,$test);
+    
+                while ($row = mysqli_fetch_assoc($wynik)) {
+                $card=new DefensiveCards($row["EnergyCost"], $row["Name"], $row["Decsription"], $row["Effect"]);
+                $this->AddCard($card);
+                }
+                ///////
+                $test='SELECT * FROM waterspecial';
+                $wynik=mysqli_query($deck_conections,$test);
+    
+                while ($row = mysqli_fetch_assoc($wynik)) {
+                $card=new SpecialCards($row["EnergyCost"], $row["Name"], $row["Decsription"], $row["Effect"]);
+                $this->AddCard($card);
+                }
+                foreach($this->ListOfCard as $cardname){
+                    echo $cardname->getCardName();
+                    log::info();
+                }
+            }
+            
+        }
+
+        public function AddCard(Card $Card) {
+            $this->ListOfCard[] = $Card;
+            shuffle($this->ListOfCard);
+        }
 
         public function ReadylistCards() {
             foreach($this->Card as $Card) {
@@ -137,7 +228,7 @@ class PlayerCardWater extends MainCard implements PlayerInterface {
         protected $winner;
 
 
-        public function __construct(MainCard $player,MainCard $enemy,) {
+        public function __construct(MainCard $player,MainCard $enemy) {
             $this->Player = $player;
             $this->Enemy = $enemy;
         }
@@ -271,6 +362,19 @@ class PlayerCardWater extends MainCard implements PlayerInterface {
 
         $you=new PlayerCardWater();
         $notyou= new PlayerCardFire();
+        $playerDeck = new Deck($you->GetPlayerType());
+        $enemyDeck = new Deck($notyou->GetPlayerType());
+
+        $playerDeck->CreatDeck();
+        log::info();
+        log::info();
+        $enemyDeck->CreatDeck();
+
+
+        $you->GetDeck($playerDeck);
+        $notyou->GetDeck($enemyDeck);
+
+
         $board= new Board($you,$notyou);
         try {
             while(true) {
