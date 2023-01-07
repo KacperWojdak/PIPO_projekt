@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 03 Sty 2023, 22:42
+-- Czas generowania: 07 Sty 2023, 13:15
 -- Wersja serwera: 10.4.27-MariaDB
 -- Wersja PHP: 8.1.12
 
@@ -30,19 +30,20 @@ SET time_zone = "+00:00";
 CREATE TABLE `fireattack` (
   `EnergyCost` int(10) NOT NULL,
   `Name` varchar(25) NOT NULL,
-  `Decsription` int(10) NOT NULL
+  `Decsription` int(10) NOT NULL,
+  `Effect` int(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
 --
 -- Zrzut danych tabeli `fireattack`
 --
 
-INSERT INTO `fireattack` (`EnergyCost`, `Name`, `Decsription`) VALUES
-(1, ' Fire Strike', 2),
-(3, 'Fire Ball', 5),
-(1, 'Burning Hands', 3),
-(3, 'Flaming Sphere', 5),
-(6, 'Rage', 10);
+INSERT INTO `fireattack` (`EnergyCost`, `Name`, `Decsription`, `Effect`) VALUES
+(1, ' Fire Strike', 2, 0),
+(3, 'Fire Ball', 5, 0),
+(1, 'Burning Hands', 3, 0),
+(3, 'Flaming Sphere', 5, 0),
+(6, 'Rage', 10, 0);
 
 -- --------------------------------------------------------
 
@@ -98,27 +99,28 @@ INSERT INTO `firespecial` (`EnergyCost`, `Name`, `Decsription`, `Effect`) VALUES
 CREATE TABLE `waterattack` (
   `EnergyCost` int(10) NOT NULL,
   `Name` varchar(25) NOT NULL,
-  `Decsription` int(10) NOT NULL
+  `Decsription` int(10) NOT NULL,
+  `Effect` int(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
 --
 -- Zrzut danych tabeli `waterattack`
 --
 
-INSERT INTO `waterattack` (`EnergyCost`, `Name`, `Decsription`) VALUES
-(1, 'Water Whip', 2),
-(2, 'Water Wave', 3),
-(3, 'Water Blade', 5),
-(4, 'Tsunami', 8),
-(5, 'Water octopus', 10);
+INSERT INTO `waterattack` (`EnergyCost`, `Name`, `Decsription`, `Effect`) VALUES
+(1, 'Water Whip', 2, 0),
+(2, 'Water Wave', 3, 0),
+(3, 'Water Blade', 5, 0),
+(4, 'Tsunami', 8, 0),
+(5, 'Water octopus', 10, 0);
 
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `waterdef`
+-- Struktura tabeli dla tabeli `waterdeff`
 --
 
-CREATE TABLE `waterdef` (
+CREATE TABLE `waterdeff` (
   `EnergyCost` int(10) NOT NULL,
   `Name` varchar(25) NOT NULL,
   `Decsription` int(10) NOT NULL,
@@ -126,10 +128,10 @@ CREATE TABLE `waterdef` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
 
 --
--- Zrzut danych tabeli `waterdef`
+-- Zrzut danych tabeli `waterdeff`
 --
 
-INSERT INTO `waterdef` (`EnergyCost`, `Name`, `Decsription`, `Effect`) VALUES
+INSERT INTO `waterdeff` (`EnergyCost`, `Name`, `Decsription`, `Effect`) VALUES
 (1, 'Water Wall', 2, 1),
 (3, 'Water Shell', 10, 1),
 (2, 'Holly Drop', 2, 2),
