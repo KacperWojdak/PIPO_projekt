@@ -10,7 +10,7 @@
         <h3>Choose Enemy deck:</h3>
     </div>
     <div class="container">
-        <div class="card">
+        <div class="card active">
             <div class="circle">
                 <div class="imgBox">
                     <img src="css/images/firebender_character.png">
