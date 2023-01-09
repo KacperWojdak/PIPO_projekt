@@ -9,6 +9,8 @@
 
     <?php
 
+    require "./vendor/autoload.php";
+    
 use CardGame\Classes\Board\Board;
 use CardGame\MainCards\PlayerCardFire;
 use CardGame\MainCards\PlayerCardWater;

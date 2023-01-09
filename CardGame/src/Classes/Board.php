@@ -2,7 +2,7 @@
 
 namespace CardGame\Classes\Board;
 
-use CardGame\src\MainCards\MainCard;
+use CardGame\MainCards\MainCard;
 
     class Board {
         protected $Player;
