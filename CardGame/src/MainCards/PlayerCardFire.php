@@ -1,6 +1,9 @@
 <?php
 
-namespace CardGame\MainCards;
+namespace Board\MainCards\MainCards\PlayerCardFire;
+
+use Board\MainCards\Interfaces\PlayerInterface\PlayerInterface;
+use Board\MainCards\MainCards\MainCard;
 
 class PlayerCardFire extends MainCard implements PlayerInterface{
 

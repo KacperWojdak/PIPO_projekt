@@ -8,14 +8,11 @@
 <body>
 
     <?php
+ require "./vendor/autoload.php";
 
-    require "./vendor/autoload.php";
-    
-use CardGame\Classes\Board\Board;
-use CardGame\MainCards\PlayerCardFire;
-use CardGame\MainCards\PlayerCardWater;
-use CardGame\MainCards\PlayerCardAir;
-use CardGame\MainCards\PlayerCardEarth;
+    use Board\Board;
+    use Board\MainCards\MainCards\PlayerCardFire\PlayerCardFire;
+    use Board\MainCards\MainCards\PlayerCardWater\PlayerCardWater;
 
         $you=new PlayerCardWater;
         $notyou= new PlayerCardFire;
@@ -24,7 +21,6 @@ use CardGame\MainCards\PlayerCardEarth;
             $board->PlayTurn();
         }while(!false)
       
-
 
     ?>
 

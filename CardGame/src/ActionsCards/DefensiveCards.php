@@ -1,11 +1,10 @@
 <?php 
 
-namespace CardGame\ActionsCards\DefensiveCards;
+namespace Board\ActionsCards\DefensiveCards;
 
-use CardGame\Classes\Card\Card;
+use Board\Card\Card;
 
-
-class DefensiveCards extends Card  {
+class DefensiveCards extends Card {
     private $type="Defensive";
 
 

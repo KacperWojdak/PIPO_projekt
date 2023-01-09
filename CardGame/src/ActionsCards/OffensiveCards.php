@@ -1,8 +1,8 @@
 <?php 
 
-namespace CardGame\ActionsCards\OffensiveCards;
+namespace Board\ActionsCards\OffensiveCards;
 
-use CardGame\Classes\Card\Card;
+use Board\Card\Card;
 
 class OffensiveCards extends Card {
     private $type="Offensive";

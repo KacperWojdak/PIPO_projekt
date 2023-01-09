@@ -2,9 +2,9 @@
 
 namespace CardGame\ActionsCards\SpecialCards;
 
-use CardGame\Classes\Card\Card;
+use Board\Card\Card;
 
-class SpecialCards extends Card {
+class SpecialCards extends Card{
     private $type="Special";
     
    

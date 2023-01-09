@@ -1,7 +1,7 @@
 {
 	"autoload": {
 		"psr-4": {
-			"CardGame\\": "src/"
+			"Board\\": "src/"
 		}
 	},
 	"require": {

@@ -1,5 +1,5 @@
 <?php
-namespace Board\MainCards\Interfaces\PlayerInterface;
+namespace Board\MainCards\Interface\PlayerInterface;
 
 interface PlayerInterface {
 

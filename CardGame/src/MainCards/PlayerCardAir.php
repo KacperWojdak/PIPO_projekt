@@ -1,8 +1,11 @@
 <?php 
 
-namespace CardGame\MainCards;
+namespace Board\MainCards\MainCards\PlayerCardAir;
 
-class PlayerCardAir extends MainCard implements PlayerInterface{ 
+use Board\MainCards\Interfaces\PlayerInterface\PlayerInterface;
+use Board\MainCards\MainCards\MainCard;
+
+class PlayerCardAir extends MainCard implements PlayerInterface { 
     private $HP=35;
     private $deck;
 

@@ -1,6 +1,6 @@
 <?php 
 
-namespace CardGame\MainCards;
+namespace Board\MainCards\MainCards;
 
 class MainCard{ 
     private $HP=40;

@@ -1,6 +1,9 @@
 <?php 
 
-namespace CardGame\MainCards;
+namespace Board\MainCards\MainCards\PlayerCardWater;
+
+use Board\MainCards\Interfaces\PlayerInterface\PlayerInterface;
+use Board\MainCards\MainCards\MainCard;
 
 class PlayerCardWater extends MainCard implements PlayerInterface {
 
