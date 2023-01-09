@@ -7,10 +7,6 @@ use CardGame\Classes\Card\Card;
 class SpecialCards extends Card {
     private $type="Special";
     
-   
-
-    
-
 }
 
 ?>

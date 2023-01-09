@@ -7,9 +7,6 @@ use CardGame\Classes\Card\Card;
 class OffensiveCards extends Card {
     private $type="Offensive";
     
- 
-    
-
 }
 
 ?>
