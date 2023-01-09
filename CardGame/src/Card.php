@@ -1,6 +1,6 @@
 <?php
 
-namespace CardGame\Classes\Card;
+namespace Board\Card;
 
     abstract class Card {
         private $NameOfCard;

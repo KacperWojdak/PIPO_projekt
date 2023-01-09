@@ -1,5 +1,5 @@
 <?php
-namespace CardGame\MainCards;
+namespace Board\MainCards\Interfaces\PlayerInterface;
 
 interface PlayerInterface {
 

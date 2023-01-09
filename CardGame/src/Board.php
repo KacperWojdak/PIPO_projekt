@@ -1,8 +1,8 @@
 <?php
 
-namespace CardGame\Classes\Board;
+namespace Board;
 
-use CardGame\MainCards\MainCard;
+use Board\MainCards\MainCards\MainCard;
 
     class Board {
         protected $Player;
@@ -10,8 +10,7 @@ use CardGame\MainCards\MainCard;
         protected $Mana=0;
         protected $TurnCounter=0;
 
-
-        public function __construct(MainCard $player,MainCard $enemy,) {
+        public function __construct(MainCard $player,MainCard $enemy) {
             $this->Player = $player;
             $this->Enemy = $enemy;
         }
