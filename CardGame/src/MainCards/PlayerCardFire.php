@@ -1,9 +1,11 @@
 <?php
 
 namespace Board\MainCards\MainCards\PlayerCardFire;
+include './src/MainCards/MainCard.php';
+include './src/MainCards/Interfaces/PlayerInterface.php';
 
-use Board\MainCards\Interfaces\PlayerInterface\PlayerInterface;
 use Board\MainCards\MainCards\MainCard;
+use src\MainCards\Interfaces\PlayerInterface\PlayerInterface;
 
 class PlayerCardFire extends MainCard implements PlayerInterface{
 
