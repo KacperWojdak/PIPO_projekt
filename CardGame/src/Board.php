@@ -8,6 +8,7 @@ use WinnerWasCalled;
     class Board {
         protected MainCard $Player;
         protected MainCard $Enemy;
+        protected $Hand=[];
         protected $Mana=1;
         protected $TurnCounter=0;
         protected $winner;
@@ -24,7 +25,16 @@ use WinnerWasCalled;
 
         
         public function Set_up_Game(){
+            Log::info();
+            Log::info();
+            $this->TurnCounter++;
+            Log::info("Trwa Tura:  $this->TurnCounter") ;
+            
+            Log::info("Mana wynosi:  $this->Mana") ;
 
+            $this->Player->DisplayCards(5);
+
+            
         }
 
         public function PlayTurn(){
@@ -33,18 +43,19 @@ use WinnerWasCalled;
             Log::info();
             $this->TurnCounter++;
             Log::info("Trwa Tura:  $this->TurnCounter") ;
-            echo "<br>" ;
+            
             Log::info("Mana wynosi:  $this->Mana") ;
-            echo "<br>" ;
+          
             $i=0;
             if($this->Mana <10){
                 $this->Mana++;
             };
+            $enemy=$this->Enemy;
             $player=$this->Player;
-            if($player->GetPassive()==1){
+            if(($player->GetPlayerType()=="Water" AND $player->GetPassive()==1) OR ($enemy->GetPlayerType()=="Water" AND $enemy->GetPassive()==1) ){
                 $this->Player->ChangeHP(-2);
                 log::info("Wyleczono maga wody o 2 punkty zdrowia");
-                echo "<br>" ;
+                
             }
          
             do{ 
@@ -53,7 +64,6 @@ use WinnerWasCalled;
                 $attackE=2;
                 $attackP=4;
 
-                $enemy=$this->Enemy;
                 if($enemy->GetPassive()==1){
                     $attackE=$attackE*2;
                     log::info("Trafenie Krtyczne");

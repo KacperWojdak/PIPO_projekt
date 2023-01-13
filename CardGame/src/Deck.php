@@ -7,6 +7,7 @@ use Game\Board\ActionsCards\DefensiveCards;
 use Game\Board\ActionsCards\OffensiveCards;
 use Game\Board\ActionsCards\SpecialCards;
 
+
     class Deck {
         protected $ListOfCard=[];
         protected Card $Card;
@@ -21,6 +22,13 @@ use Game\Board\ActionsCards\SpecialCards;
             for($i=0;$i<$num_of_card;$i++){
                 $card_of_deck=$this->ListOfCard[$i] ;
                 Log::info($card_of_deck->getCardName()." ".$card_of_deck->getEnergyCost()." ".$card_of_deck->getCapacity()." ".$card_of_deck->getValue());
+            }
+        }
+        public function PushCardToHand(int $How_Many){
+
+            for($i=0;$i<$How_Many;$i++){
+                $card_of_deck=$this->ListOfCard[$i] ;
+                return $card_of_deck;
             }
         }
 
@@ -87,8 +95,7 @@ use Game\Board\ActionsCards\SpecialCards;
             shuffle($this->ListOfCard);
         }
         
-        public function PushCards(int $How_Many){
-
-        }
+    
+    
     }
 ?>
