@@ -1,9 +1,8 @@
 <?php 
 
-namespace Board\MainCards\MainCards\PlayerCardAir;
+namespace  Game\Board\MainCards;
 
-use Board\MainCards\Interfaces\PlayerInterface\PlayerInterface;
-use Board\MainCards\MainCards\MainCard;
+use Game\Board\MainCards\Interfaces\PlayerInterface;
 
 class PlayerCardAir extends MainCard implements PlayerInterface { 
     private $HP=35;
@@ -24,6 +23,10 @@ class PlayerCardAir extends MainCard implements PlayerInterface {
             return 0;
         }
         
+    }
+    public function GetPlayerType(): string
+    {
+        return "Fire";
     }
 }
 

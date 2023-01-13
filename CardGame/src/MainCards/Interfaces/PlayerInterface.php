@@ -1,11 +1,10 @@
 <?php
-//namespace Board\MainCards\Interface\PlayerInterface;
-namespace src\MainCards\Interfaces\PlayerInterface;
+namespace Game\Board\MainCards\Interfaces;
 
 interface PlayerInterface {
 
 	public function GetPassive(): int;
-
+	public function GetPlayerType():string;
 
 
 }

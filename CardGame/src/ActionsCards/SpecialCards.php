@@ -1,11 +1,24 @@
 <?php 
 
-namespace CardGame\ActionsCards\SpecialCards;
+namespace Game\Board\ActionsCards;
 
-use Board\Card\Card;
+use Game\Board\Card;
 
 class SpecialCards extends Card{
     private $type="Special";
+        
+    public function DrawCard(){
+
+    }
+    public function Nothing(){
+     
+    }
+    public function RegenMana(){
+     
+    }
+    public function Pass(){
+
+    }
     
 }
 

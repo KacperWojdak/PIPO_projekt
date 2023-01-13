@@ -1,11 +1,14 @@
 <?php 
 
-namespace Board\ActionsCards\OffensiveCards;
+namespace Game\Board\ActionsCards;
 
-use Board\Card\Card;
+use Game\Board\Card;
 
 class OffensiveCards extends Card {
     private $type="Offensive";
+    public function ChangeHP(int $HP){
+    
+    }
     
 }
 

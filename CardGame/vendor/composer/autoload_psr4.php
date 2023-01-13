@@ -6,5 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'ParkingLotManager\\' => array($baseDir . '/src'),
+    'Game\\Board\\' => array($baseDir . '/src'),
 );

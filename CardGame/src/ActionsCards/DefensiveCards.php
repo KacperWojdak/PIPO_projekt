@@ -1,13 +1,17 @@
 <?php 
 
-namespace Board\ActionsCards\DefensiveCards;
+namespace Game\Board\ActionsCards;
 
-use Board\Card\Card;
+use Game\Board\Card;
 
 class DefensiveCards extends Card {
     private $type="Defensive";
-
-
+    
+    
+    public function ChangeDEF(int $def){
+    }
+    public function ChangeHP(int $HP){
+ }
    
    
 

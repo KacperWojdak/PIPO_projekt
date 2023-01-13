@@ -1,11 +1,8 @@
 <?php
 
-namespace Board\MainCards\MainCards\PlayerCardFire;
-include './src/MainCards/MainCard.php';
-include './src/MainCards/Interfaces/PlayerInterface.php';
+namespace  Game\Board\MainCards;
 
-use Board\MainCards\MainCards\MainCard;
-use src\MainCards\Interfaces\PlayerInterface\PlayerInterface;
+use Game\Board\MainCards\Interfaces\PlayerInterface;
 
 class PlayerCardFire extends MainCard implements PlayerInterface{
 
@@ -20,10 +17,11 @@ class PlayerCardFire extends MainCard implements PlayerInterface{
         }
         
     }
-
-    public function GetDeck(){
-
+    public function GetPlayerType(): string
+    {
+        return "Fire";
     }
+
 }
 
 
