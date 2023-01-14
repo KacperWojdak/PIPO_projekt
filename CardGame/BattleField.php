@@ -64,7 +64,6 @@ class WinnerWasCalled extends Exception{}
         $enemyChoose->SetDeck($enemyDeck);
 
         $board = new Board($playerChoose, $enemyChoose);
-        $board->Set_up_Game();
         try {
             while(true) {
                 $board->PlayTurn();

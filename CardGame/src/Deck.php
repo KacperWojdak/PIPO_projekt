@@ -30,13 +30,13 @@ use Game\Board\ActionsCards\SpecialCards;
                         $efect="Wylecz o ";   
                     }
                     $value = $card_of_deck->getValue() ;
-                    Log::info("\e[32m".$name." ".$energy." ".$efect.$value."\e[0m");
+                    Log::info("\e[32m[".$energy."] ".$name." -(".$efect.$value.")\e[0m");
                 }
 
                 if ($card_of_deck instanceof OffensiveCards) {
                     $efect = "Zadaj obrażenia o wartośći ";
                     $value = $card_of_deck->getValue();
-                    Log::info("\e[31m".$name." ".$energy." ".$efect.$value."\e[0m");
+                    Log::info("\e[31m [".$energy."] ".$name." -(".$efect.$value.")\e[0m");
                 }
 
                 if ($card_of_deck instanceof SpecialCards) {
@@ -56,7 +56,7 @@ use Game\Board\ActionsCards\SpecialCards;
                         $efect = "Odnów Manę o ";  
                         $value = $card_of_deck->getValue(); 
                     }
-                    Log::info("\e[35m".$name." ".$energy." ".$efect.$value."\e[0m");
+                    Log::info("\e[35m[".$energy."] ".$name." -(".$efect.$value.")\e[0m");
                 }
             }
         }
@@ -67,8 +67,8 @@ use Game\Board\ActionsCards\SpecialCards;
                 $energy = $card_of_deck->getEnergyCost();
                 $capacity = $card_of_deck->getCapacity();
                 $value = $card_of_deck->getValue();
-                return [$energy, $name, $capacity, $value];
                 \array_splice($this->ListOfCard, 1, 0);
+                return [$energy, $name, $capacity, $value];
             }
     
         public function CreatDeck() {
@@ -133,6 +133,29 @@ use Game\Board\ActionsCards\SpecialCards;
         public function AddCard(Card $Card) {
             $this->ListOfCard[] = $Card;
             shuffle($this->ListOfCard);
+        }
+
+        public function CHOICE_CARD(int $nr){
+            $chocie=$this->ListOfCard[$nr];
+            array_splice($this->ListOfCard,$nr,1);
+            if($chocie instanceof DefensiveCards){
+                $value=$chocie->getValue();
+                $description=$chocie->getCapacity();
+                $deff=[2,$value,$description];
+                return $deff;
+            }
+            if($chocie instanceof SpecialCards){
+                $value=$chocie->getValue();
+                $description=$chocie->getCapacity();
+                $special=[3,$value,$description];
+                return $special;
+            }
+            if($chocie instanceof OffensiveCards){
+                $value=$chocie->getValue();
+                $description=1;
+                $attack=[1,$value,1];
+                return $attack;
+            }
         }
     }
 ?>

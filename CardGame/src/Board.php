@@ -9,6 +9,7 @@ use WinnerWasCalled;
     class Board {
         protected MainCard $Player;
         protected MainCard $Enemy;
+        protected $HumanHand = 5;
         protected $Mana = 1;
         protected $TurnCounter = 0;
         protected $winner;
@@ -24,31 +25,23 @@ use WinnerWasCalled;
         }
 
 
-        public function Set_up_Game() {
-            Log::info();
-            Log::info();
-            $this->TurnCounter++;
-            Log::info("Trwa Tura:  $this->TurnCounter") ;
-            Log::info("Mana wynosi:  $this->Mana") ;
-            Log::info("Karty Gracza: ");
 
-            $this->Player->DisplayCards(5);
-
-        }
 
         public function PlayTurn() {
 
             Log::info();
             Log::info();
             $this->TurnCounter++;
+            Log::info("\e[1mTrwa Tura: $this->TurnCounter\e[0m") ;
+            Log::info();
+            Log::info("\e[1mMana wynosi: $this->Mana\e[0m") ;
+            Log::info();
             $i = 0;
             if ($this->Mana < 10) {
                 $this->Mana++;
             };
-            Log::info("Trwa Tura:  $this->TurnCounter") ;
-            Log::info("Mana wynosi:  $this->Mana") ;
         
-
+            $this->Player->DisplayCards($this->HumanHand);
             $enemy = $this->Enemy;
             $player = $this->Player;
 
@@ -56,53 +49,32 @@ use WinnerWasCalled;
                 $this->Player->ChangeHP(-2);
                 log::info("Wyleczono maga wody o 2 punkty zdrowia");
             }
-         
-            do { 
-                $attackE = 2;
-                $attackP = 4;
+            do{
+            Log::info("Czy chcesz zagrać kartę? ");
+            Log::info("1 - tak; 0 - nie");
+            $playerPick = readline("");
 
-                if ($enemy->GetPassive() == 1) {
-                    $attackE = $attackE * 2;
-                    log::info("Trafenie Krtyczne");
-                }
-
-                $this->Player->ChangeDEF(3);
-                $this->Enemy->ChangeDEF(1);
-
-                if ($this->Enemy->GetDEF() > 0) {
-                    $dmgP = $attackP-$this->Enemy->GetDEF();
-                    if ($dmgP <= 0) {
-                        $this->Enemy->ChangeDEF(-($attackP));
-                        $dmgP = 0;
-                    }
-                    if ($dmgP > 0){
-                        $this->Enemy->ChangeDEF(-($attackP - $dmgP));
-                    }
-                }
-
-                if ($this->Player->GetDEF() > 0){
-                    $dmgE=$attackE-$this->Player->GetDEF();
-                    if ($dmgE <= 0) {
-                        $this->Player->ChangeDEF(-($attackE));
-                        $dmgE = 0;
-                    }
-                    if ($dmgE > 0) {
-                        $this->Player->ChangeDEF(-($attackE - $dmgE));
-                    }
-                }
-
-                $this->Enemy->ChangeHP($dmgP);
-                $this->Player->ChangeHP($dmgE);
-                $i++;
-            }while ($i != 1);
-
-            $eHP = $this->Enemy->GetHp();
-            $pHP = $this->Player->GetHp();
-
-            Log::info("Twoje życie wynosi:  $pHP , A twój DEF: ".$this->Player->GetDEF()) ;
-            Log::info("Życie twojego przeciwnika wynosi:  $eHP, A jego DEF: ".$this->Enemy->GetDEF()) ;
-            $player->SHOW_HAND();
+            if ($playerPick == 1){
+                $eHP = $this->Enemy->GetHp();
+                $pHP = $this->Player->GetHp();
+                Log::info("Jaką karte chcesz zagrać? ");
+                $CardPick = readline("");
+                $this->Player->USE_CARD_IN_DECK($this->Enemy,$CardPick);
+                $this->HumanHand-=1;
+                $player->DisplayCards($this->HumanHand);
+                $eHP = $this->Enemy->GetHp();
+                $pHP = $this->Player->GetHp();
             
+            }
+            }while($playerPick!=0);
+            if ($playerPick == 0) {
+                $eHP = $this->Enemy->GetHp();
+                $pHP = $this->Player->GetHp();
+
+                Log::info("Twoje życie wynosi:  $pHP , A twój DEF: ".$this->Player->GetDEF()) ;
+                Log::info("Życie twojego przeciwnika wynosi:  $eHP, A jego DEF: ".$this->Enemy->GetDEF());
+                $this->HumanHand+=2;
+            }
             if ($eHP <= 0 || $pHP <= 0) {
                 if ($eHP > $pHP) {
                     $this->winner = "Przeciwnik";
