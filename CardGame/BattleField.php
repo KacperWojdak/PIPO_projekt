@@ -54,11 +54,8 @@ class WinnerWasCalled extends Exception{}
         $enemyDeck = new Deck($enemyChoose->GetPlayerType());
 
         $playerDeck->CreatDeck();
-        $playerDeck->DisplayDeck(5);
-        Log::info();
-        log::info();
         $enemyDeck->CreatDeck();
-        $enemyDeck->DisplayDeck(5);
+        
         
         $playerChoose->SetDeck($playerDeck);
         $enemyChoose->SetDeck($enemyDeck);

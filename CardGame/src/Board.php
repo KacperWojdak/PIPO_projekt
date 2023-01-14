@@ -59,6 +59,7 @@ use WinnerWasCalled;
             }
             $Player_Mana=$this->Mana;
             $this->Player->SetMana($Player_Mana);
+            $this->Enemy->SetMana($Player_Mana);
             do{
             Log::info("Czy chcesz zagrać kartę? ");
             Log::info("1 - tak; 0 - nie");
@@ -81,17 +82,37 @@ use WinnerWasCalled;
                     }
                 }
                 }while($turn!=1);
+                Log::info("Przeciwnik :");
+                do{
+                    $robochoice=random_int(1,$this->RoboHand);
+                    $this->Enemy->USE_CARD_IN_DECK($this->Enemy,$robochoice);
+                    $Enemyturn=$this->Enemy->GetDone();
+                    if($turn == 0){
+                        $AreYouSure=random_int(1,2);
+                    if($AreYouSure==2){
+                        $Enemyturn=1;
+                        }
+                    }
+                    }while($Enemyturn!=1);
                 
                 if($this->Player->GetDone()==1){
                     $this->HumanHand-=1;
                 }
+                if($this->Enemy->GetDone()==1){
+                    $this->RoboHand-=1;
+                }
                 $this->HumanHand+=$this->Player->GetHand();
+                $this->RoboHand+=$this->Enemy->GetHand();
                 Log::info();
                 Log::info("\e[1mPozostało ".$this->Player->GetMana()." Many\e[0m");
                 Log::info();
-                $test=$this->HumanHand+2;
-                if($test<=$this->Player->TEST()){
+                $Playertest=$this->HumanHand+2;
+                if($Playertest<=$this->Player->TEST()){
                 $player->DisplayCards($this->HumanHand);
+                }
+                $Enemytest=$this->RoboHand+2;
+                if($Enemytest<=$this->Enemy->TEST()){
+                $enemy->DisplayCards($this->RoboHand);
                 }
                 $eHP = $this->Enemy->GetHp();
                 $pHP = $this->Player->GetHp();
