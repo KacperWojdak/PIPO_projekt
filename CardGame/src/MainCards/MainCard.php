@@ -18,78 +18,74 @@ class MainCard implements PlayerInterface {
     
     
     public function TEST(){
-       return $this->deck->Lenght_of_Deck();
+       return $this->deck->lengthOfDeck();
     }
     public function SetDeck(Deck $deck) {
         $this->deck = $deck;
     }
 
-    public function USE_CARD_IN_DECK(MainCard $Enemy,int $nr){
-        $this->Done=0;
-        $this->Hand=0;
-        $nr-=1;
-        $card[]=$this->deck->CHOICE_CARD($nr);
-        if($card[0][3]<=$this->mana){
-            $this->mana-=$card[0][3];
-        if($card[0][0]==1){
+    public function USE_CARD_IN_DECK(MainCard $Enemy, int $nr) {
+        $this->Done = 0;
+        $this->Hand = 0;
+        $nr -= 1;
+        $card[] = $this->deck->CHOICE_CARD($nr);
+        if ($card[0][3] <= $this->mana) {
+            $this->mana -= $card[0][3];
+        if ($card[0][0]==1) {
             Log::info("Zadano ".$card[0][1]." obrażeń");
             $Enemy->ChangeHP($card[0][1]);
             $this->deck->DELTE_CARD($nr);
-            $this->Done=1;
-            
+            $this->Done = 1;
         }
-        if($card[0][0]==2){
-            if($card[0][2]==1){
+
+        if ($card[0][0] == 2) {
+            if ($card[0][2] == 1) {
             Log::info("Zwiększono obronę o ".$card[0][1]." pkt");
             $this->ChangeDEF($card[0][1]);
             $this->deck->DELTE_CARD($nr);
-            $this->Done=1;
+            $this->Done = 1;
            
             }
-            if($card[0][2]==2){
+            if ($card[0][2] == 2) {
                 Log::info("Wyleczono ".$card[0][1]." Hp");
                 $this->ChangeHP(-$card[0][1]);
                 $this->deck->DELTE_CARD($nr);
-                $this->Done=1;
-                
+                $this->Done = 1;   
             }
-           
         }
-        if($card[0][0]==3){
-            if($card[0][2]==1){
-                Log::info("Dobrano ".$card[0][1]." Karty");
-                $this->Hand=$card[0][1];
-                $this->deck->DELTE_CARD($nr);
-                $this->Done=1;
+
+        if ($card[0][0] == 3) {
+                if ($card[0][2] == 1) {
+                    Log::info("Dobrano ".$card[0][1]." Karty");
+                    $this->Hand = $card[0][1];
+                    $this->deck->DELTE_CARD($nr);
+                    $this->Done = 1;
+                }
+                if ($card[0][2] == 2) {
+                    Log::info("NIc się nie stało");
+                    $this->deck->DELTE_CARD($nr);
+                    $this->Done = 1;
+                }
+                if ($card[0][2] == 3) {
+                    Log::info("Przetasowno Karty");
+                    $this->deck->ShuffleDeck();
+                    $this->deck->DELTE_CARD($nr);
+                    $this->Done = 1;
+                }
+                if ($card[0][2] == 4) {
+                    Log::info("Dodano ".$card[0][1]." Many");
+                    $this->mana += $card[0][1];
+                    $this->deck->DELTE_CARD($nr);
+                    $this->Done = 1;
+                }  
             }
-            if($card[0][2]==2){
-                Log::info("NIc się nie stało");
-                $this->deck->DELTE_CARD($nr);
-                $this->Done=1;
-            }
-            if($card[0][2]==3){
-                Log::info("Przetasowno Karty");
-                $this->deck->Przetasuj_Deck();
-                $this->deck->DELTE_CARD($nr);
-                $this->Done=1;
-            }
-            if($card[0][2]==4){
-                Log::info("Dodano ".$card[0][1]." Many");
-                $this->mana+=$card[0][1];
-                $this->deck->DELTE_CARD($nr);
-                $this->Done=1;
-            }
-            
-           
         }
     }
 
-    }
-
-    public function GetHand(){
+    public function GetHand() {
         return $this->Hand;
     }
-    public function GetDone(){
+    public function GetDone() {
         return $this->Done;
     }
 
@@ -113,16 +109,16 @@ class MainCard implements PlayerInterface {
     public function GetHp() {
         return $this->HP;
     }
-    public function  ChangeHP( $HP) {
-        if($HP <0){
-         $this->HP = $this->HP-$HP;
+    public function  ChangeHP($HP) {
+        if ($HP < 0) {
+         $this->HP = $this->HP - $HP;
         }
-        if($HP >0){
+        if ($HP > 0) {
             $def=$this->DEF;
-            if($HP>$def){
-                $reszta=$HP-$def;
-                $this->ChangeDEF($HP-$reszta);
-                $this->HP=$this->HP-$reszta;
+            if ($HP > $def) {
+                $reszta = $HP - $def;
+                $this->ChangeDEF($HP - $reszta);
+                $this->HP = $this->HP - $reszta;
             }
         }
     }
