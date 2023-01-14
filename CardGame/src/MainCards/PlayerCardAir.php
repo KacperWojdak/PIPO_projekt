@@ -5,33 +5,27 @@ namespace  Game\Board\MainCards;
 use Game\Board\MainCards\Interfaces\PlayerInterface;
 
 class PlayerCardAir extends MainCard implements PlayerInterface { 
-    private $HP=35;
+    private $HP = 35;
     private $deck;
-    private $type="Air";
+    private $type = "Air";
 
-    public function GetDeck(){
+    public function GetDeck() {}
 
-    }
-
-    public function GetPassive(): int{
+    public function GetPassive(): int {
         
-        $random=random_int(1,10);
-        if($random>=9){
+        $random = random_int(1, 10);
+        if ($random >= 9) {
             return 1;
         }
-        if($random<9){
+        if ($random < 9) {
             return 0;
         }
         
     }
-    public function GetPlayerType(): string{
+
+    public function GetPlayerType(): string {
         return $this->type;
     }
-    
 }
-
-
-
-
 
 ?>

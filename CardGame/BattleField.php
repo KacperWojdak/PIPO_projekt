@@ -54,33 +54,25 @@ class WinnerWasCalled extends Exception{}
         $enemyDeck = new Deck($enemyChoose->GetPlayerType());
 
         $playerDeck->CreatDeck();
-        $playerDeck->PushDeck(5);
+        $playerDeck->DisplayDeck(5);
         Log::info();
         log::info();
         $enemyDeck->CreatDeck();
-        $enemyDeck->PushDeck(5);
+        $enemyDeck->DisplayDeck(5);
         
-
-
         $playerChoose->SetDeck($playerDeck);
         $enemyChoose->SetDeck($enemyDeck);
 
-        
-
-
-        $board= new Board($playerChoose,$enemyChoose);
+        $board = new Board($playerChoose, $enemyChoose);
         $board->Set_up_Game();
         try {
             while(true) {
                 $board->PlayTurn();
             }
-        }catch(WinnerWasCalled $exception) {
+        }
+        catch (WinnerWasCalled $exception) {
             Log::info();
             Log::info($board->GetWinner() . " wygrał.");
         }
-
-        
-      
-
-    ?>
+?>
 
