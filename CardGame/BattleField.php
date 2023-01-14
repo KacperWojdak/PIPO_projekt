@@ -1,12 +1,12 @@
 <?php
 require "./vendor/autoload.php";
 
-use Game\Board\Board;
-use Game\Board\Deck;
 use Game\Board\Log;
+use Game\Board\Deck;
+use Game\Board\Board;
 use Game\Board\MainCards\PlayerCardAir;
-use Game\Board\MainCards\PlayerCardEarth;
 use Game\Board\MainCards\PlayerCardFire;
+use Game\Board\MainCards\PlayerCardEarth;
 use Game\Board\MainCards\PlayerCardWater;
 use Game\Board\MainCards\Interfaces\PlayerInterface;
 
@@ -23,53 +23,51 @@ class WinnerWasCalled extends Exception{}
 
 <body>
 
-    <?php
- Log::info("Wybierz swoją talię: ") . PHP_EOL;
- Log::info("1 - \e[1;34;42mTalia żywiołu wody\e[0m") . PHP_EOL;
- Log::info("2 - \e[1;31;42mTalia żywiołu ognia\e[0m") . PHP_EOL;
- Log::info("3 - \e[0;33;42mTalia żywiołu ziemi\e[0m") . PHP_EOL;
- Log::info("4 - \e[0;37;42mTalia żywiołu powietrza\e[0m") . PHP_EOL;
+<?php
+    Log::info("Wybierz swoją talię: ") . PHP_EOL;
+    Log::info("1 - \e[34mTalia żywiołu wody\e[0m") . PHP_EOL;
+    Log::info("2 - \e[91mTalia żywiołu ognia\e[0m") . PHP_EOL;
+    Log::info("3 - \e[92mTalia żywiołu ziemi\e[0m") . PHP_EOL;
+    Log::info("4 - \e[33mTalia żywiołu powietrza\e[0m") . PHP_EOL;
 
 
- $playerChoose = readline("");
-   if ($playerChoose == 1) {
-       $player = new PlayerCardWater();
-}
-   if ($playerChoose == 2) {
-       $player = new PlayerCardFire();
-}
-   if ($playerChoose == 3) {
-       $player = new PlayerCardEarth();
-}
-   if ($playerChoose == 4) {
-       $player = new PlayerCardAir();
-}
+        $playerChoose = readline("");
+            if ($playerChoose == 1) {
+                $playerChoose = new PlayerCardWater;
+            }
+            else if ($playerChoose == 2) {
+                $playerChoose = new PlayerCardFire;
+            }
+            else if ($playerChoose == 3) {
+                $playerChoose = new PlayerCardEarth;
+            }
+            else if ($playerChoose == 4) {
+                $playerChoose = new PlayerCardAir;
+            }
 
-Log::info("Wybierz talię przeciwnika: ") . PHP_EOL;
-$enemyChoose = readline("");
+    Log::info("Wybierz talię przeciwnika: ") . PHP_EOL;
+        $enemyChoose = readline("");
 
-if ($enemyChoose == 1) {
-           $enemy = new PlayerCardWater();
-}
-     if ($enemyChoose == 2) {
-           $enemy = new PlayerCardFire();
-}
-      if ($enemyChoose == 3) {
-           $enemy = new PlayerCardEarth();
-}
-       if ($enemyChoose == 4) {
-           $enemy = new PlayerCardAir();
-}
-
-LOG::info("Typ gracza ".$player->GetPlayerType());
-
- $playerDeck = new Deck($player->GetPlayerType());
- $enemyDeck = new Deck($enemy->GetPlayerType());
-
+        if ($enemyChoose == 1) {
+            $enemyChoose = new PlayerCardWater;
+        }
+        else if ($enemyChoose == 2) {
+            $enemyChoose = new PlayerCardFire;
+        }
+        else if ($enemyChoose == 3) {
+            $enemyChoose = new PlayerCardEarth;
+        }
+        else if ($enemyChoose == 4) {
+            $enemyChoose = new PlayerCardAir;
+        }
+       
+        $playerDeck = new Deck($playerChoose->GetPlayerType());
+        $enemyDeck = new Deck($enemyChoose->GetPlayerType());
 
         $playerDeck->CreatDeck();
         $playerDeck->PushDeck(5);
         Log::info();
+        echo "<br>";
         log::info();
         $enemyDeck->CreatDeck();
         $enemyDeck->PushDeck(5);
@@ -82,8 +80,8 @@ LOG::info("Typ gracza ".$player->GetPlayerType());
         
 
 
-        $board= new Board($player,$enemy);
-       
+        $board= new Board($you,$notyou);
+        $board->Set_up_Game();
         try {
             while(true) {
                 $board->PlayTurn();
