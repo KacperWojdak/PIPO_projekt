@@ -2,15 +2,17 @@
 namespace Game\Board;
 
 use Game\Board\Log;
+
 use Game\Board\MainCards\MainCard;
 use Game\Board\MainCards\Interfaces\PlayerInterface;
+use Game\Board\MainCards\PlayerCardAir;
 use WinnerWasCalled;
 
     class Board {
         protected MainCard $Player;
         protected MainCard $Enemy;
         protected $HumanHand = 5;
-        protected $Mana = 1;
+        protected $Mana = 0;
         protected $TurnCounter = 0;
         protected $winner;
 
@@ -24,7 +26,7 @@ use WinnerWasCalled;
             return $this->winner;
         }
 
-
+       
 
 
         public function PlayTurn() {
@@ -34,12 +36,12 @@ use WinnerWasCalled;
             $this->TurnCounter++;
             Log::info("\e[1mTrwa Tura: $this->TurnCounter\e[0m") ;
             Log::info();
-            Log::info("\e[1mMana wynosi: $this->Mana\e[0m") ;
-            Log::info();
-            $i = 0;
             if ($this->Mana < 10) {
                 $this->Mana++;
             };
+        
+            Log::info("\e[1mMana wynosi: $this->Mana\e[0m") ;
+            Log::info();
         
             $this->Player->DisplayCards($this->HumanHand);
             $enemy = $this->Enemy;
@@ -49,6 +51,8 @@ use WinnerWasCalled;
                 $this->Player->ChangeHP(-2);
                 log::info("Wyleczono maga wody o 2 punkty zdrowia");
             }
+            $Player_Mana=$this->Mana;
+            $this->Player->SetMana($Player_Mana);
             do{
             Log::info("Czy chcesz zagrać kartę? ");
             Log::info("1 - tak; 0 - nie");
@@ -60,7 +64,13 @@ use WinnerWasCalled;
                 Log::info("Jaką karte chcesz zagrać? ");
                 $CardPick = readline("");
                 $this->Player->USE_CARD_IN_DECK($this->Enemy,$CardPick);
-                $this->HumanHand-=1;
+                if($this->Player->GetDone()==1){
+                    $this->HumanHand-=1;
+                }
+                $this->HumanHand+=$this->Player->GetHand();
+                Log::info();
+                Log::info("\e[1mPozostało ".$this->Player->GetMana()." Many\e[0m");
+                Log::info();
                 $player->DisplayCards($this->HumanHand);
                 $eHP = $this->Enemy->GetHp();
                 $pHP = $this->Player->GetHp();

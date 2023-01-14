@@ -12,12 +12,15 @@ use Game\Board\ActionsCards\SpecialCards;
         protected Card $Card;
         protected $Type;
 
+
         public function __construct(string $type) {
             $this->Type = $type;
         }
 
+        
         public function DisplayDeck(int $num_of_card) {
             for ($i = 0; $i < $num_of_card; $i++) {
+                $int=$i+1;
                 $card_of_deck = $this->ListOfCard[$i];
                 $name = $card_of_deck->getCardName();
                 $energy = $card_of_deck->getEnergyCost();
@@ -30,13 +33,13 @@ use Game\Board\ActionsCards\SpecialCards;
                         $efect="Wylecz o ";   
                     }
                     $value = $card_of_deck->getValue() ;
-                    Log::info("\e[32m[".$energy."] ".$name." -(".$efect.$value.")\e[0m");
+                    Log::info("\e[32m".$int."- [".$energy."] ".$name." - (".$efect.$value.")\e[0m");
                 }
 
                 if ($card_of_deck instanceof OffensiveCards) {
                     $efect = "Zadaj obrażenia o wartośći ";
                     $value = $card_of_deck->getValue();
-                    Log::info("\e[31m [".$energy."] ".$name." -(".$efect.$value.")\e[0m");
+                    Log::info("\e[31m".$int."- [".$energy."] ".$name." - (".$efect.$value.")\e[0m");
                 }
 
                 if ($card_of_deck instanceof SpecialCards) {
@@ -56,11 +59,15 @@ use Game\Board\ActionsCards\SpecialCards;
                         $efect = "Odnów Manę o ";  
                         $value = $card_of_deck->getValue(); 
                     }
-                    Log::info("\e[35m[".$energy."] ".$name." -(".$efect.$value.")\e[0m");
+                    Log::info("\e[35m".$int."- [".$energy."] ".$name." - (".$efect.$value.")\e[0m");
                 }
             }
         }
 
+
+        public function Przetasuj_Deck(){
+            shuffle($this->ListOfCard);
+        }
         public function PushDeck() {
                 $card_of_deck = $this->ListOfCard[0];
                 $name = $card_of_deck->getCardName();
@@ -137,25 +144,33 @@ use Game\Board\ActionsCards\SpecialCards;
 
         public function CHOICE_CARD(int $nr){
             $chocie=$this->ListOfCard[$nr];
-            array_splice($this->ListOfCard,$nr,1);
             if($chocie instanceof DefensiveCards){
                 $value=$chocie->getValue();
+                $energy=$chocie->getEnergyCost();
                 $description=$chocie->getCapacity();
-                $deff=[2,$value,$description];
+                $deff=[2,$value,$description,$energy];
                 return $deff;
+                
             }
             if($chocie instanceof SpecialCards){
                 $value=$chocie->getValue();
                 $description=$chocie->getCapacity();
-                $special=[3,$value,$description];
+                $energy=$chocie->getEnergyCost();
+                $special=[3,$value,$description,$energy];
                 return $special;
+                
             }
             if($chocie instanceof OffensiveCards){
                 $value=$chocie->getValue();
                 $description=1;
-                $attack=[1,$value,1];
+                $energy=$chocie->getEnergyCost();
+                $attack=[1,$value,1,$energy];
                 return $attack;
+                
             }
+        }
+        public function DELTE_CARD(int $nr){
+            array_splice($this->ListOfCard,$nr,1);
         }
     }
 ?>

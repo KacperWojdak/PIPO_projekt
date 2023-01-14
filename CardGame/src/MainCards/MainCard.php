@@ -11,6 +11,9 @@ class MainCard implements PlayerInterface {
     private int $DEF = 0;
     private Deck $deck;
     private $type = "";
+    private $mana = 0;
+    private $Done=0;
+    private $Hand=0;
 
     
     
@@ -20,27 +23,72 @@ class MainCard implements PlayerInterface {
     }
 
     public function USE_CARD_IN_DECK(MainCard $Enemy,int $nr){
+        $this->Done=0;
+        $this->Hand=0;
         $nr-=1;
         $card[]=$this->deck->CHOICE_CARD($nr);
+        if($card[0][3]<=$this->mana){
+            $this->mana-=$card[0][3];
         if($card[0][0]==1){
+            Log::info("Zadano ".$card[0][1]." obrażeń");
             $Enemy->ChangeHP($card[0][1]);
-            log::info("atack");
+            $this->deck->DELTE_CARD($nr);
+            $this->Done=1;
+            
         }
         if($card[0][0]==2){
             if($card[0][2]==1){
+            Log::info("Zwiększono obronę o ".$card[0][1]." pkt");
             $this->ChangeDEF($card[0][1]);
-            log::info("Deff");
+            $this->deck->DELTE_CARD($nr);
+            $this->Done=1;
+           
             }
             if($card[0][2]==2){
+                Log::info("Wyleczono ".$card[0][1]." Hp");
                 $this->ChangeHP(-$card[0][1]);
-                log::info("Heal");
+                $this->deck->DELTE_CARD($nr);
+                $this->Done=1;
+                
             }
            
         }
         if($card[0][0]==3){
-            log::info("Nic");
+            if($card[0][2]==1){
+                Log::info("Dobrano ".$card[0][1]." Karty");
+                $this->Hand=$card[0][1];
+                $this->deck->DELTE_CARD($nr);
+                $this->Done=1;
+            }
+            if($card[0][2]==2){
+                Log::info("NIc się nie stało");
+                $this->deck->DELTE_CARD($nr);
+                $this->Done=1;
+            }
+            if($card[0][2]==3){
+                Log::info("Przetasowno Karty");
+                $this->deck->Przetasuj_Deck();
+                $this->deck->DELTE_CARD($nr);
+                $this->Done=1;
+            }
+            if($card[0][2]==4){
+                Log::info("Dodano ".$card[0][1]." Many");
+                $this->mana+=$card[0][1];
+                $this->deck->DELTE_CARD($nr);
+                $this->Done=1;
+            }
+            
+           
         }
+    }
 
+    }
+
+    public function GetHand(){
+        return $this->Hand;
+    }
+    public function GetDone(){
+        return $this->Done;
     }
 
     public function GetPassive(): int {
@@ -88,7 +136,12 @@ class MainCard implements PlayerInterface {
     public function GetPlayerType(): string {
         return $this->type;
     }
-
+    public function SetMana(int $mana){
+        $this->mana=$mana;
+    }
+    public function GetMana(){
+        return $this->mana;
+    }
 }
 
 ?>
