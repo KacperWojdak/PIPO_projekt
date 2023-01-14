@@ -12,18 +12,7 @@ use Game\Board\MainCards\Interfaces\PlayerInterface;
 
 class WinnerWasCalled extends Exception{}
 
-?>
-<!DOCTYPE html>
-<head>
-    <link rel="stylesheet" href="css/battlefield.css" type="text/css">
-    <title>Fight</title>
-    
-</head>
 
-
-<body>
-
-<?php
     Log::info("Wybierz swoją talię: ") . PHP_EOL;
     Log::info("1 - \e[34mTalia żywiołu wody\e[0m") . PHP_EOL;
     Log::info("2 - \e[91mTalia żywiołu ognia\e[0m") . PHP_EOL;
@@ -67,7 +56,6 @@ class WinnerWasCalled extends Exception{}
         $playerDeck->CreatDeck();
         $playerDeck->PushDeck(5);
         Log::info();
-        echo "<br>";
         log::info();
         $enemyDeck->CreatDeck();
         $enemyDeck->PushDeck(5);
@@ -96,7 +84,3 @@ class WinnerWasCalled extends Exception{}
 
     ?>
 
-</body>
-
-
-</html>
