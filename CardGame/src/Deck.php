@@ -20,7 +20,7 @@ use Game\Board\ActionsCards\SpecialCards;
 
         public function PushDeck(int $num_of_card){
             for($i=0;$i<$num_of_card;$i++){
-                $card_of_deck=$this->ListOfCard[$i] ;
+                $card_of_deck=$this->ListOfCard[$i];
                 Log::info($card_of_deck->getCardName()." ".$card_of_deck->getEnergyCost()." ".$card_of_deck->getCapacity()." ".$card_of_deck->getValue());
             }
         }
