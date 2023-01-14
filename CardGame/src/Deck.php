@@ -88,7 +88,7 @@ use Game\Board\ActionsCards\SpecialCards;
                 $wynik = mysqli_query($deck_conections, $test);
 
             while ($row = mysqli_fetch_assoc($wynik)) {
-                $card = new OffensiveCards($row["EnergyCost"], $row["Name"], $row["Decsription"], $row["Effect"]);
+                $card = new OffensiveCards($row["EnergyCost"], $row["Name"], $row["Description"], $row["Effect"]);
                 $this->AddCard($card);
             }
 
@@ -97,7 +97,7 @@ use Game\Board\ActionsCards\SpecialCards;
             $wynik = mysqli_query($deck_conections, $test);
 
             while ($row = mysqli_fetch_assoc($wynik)) {
-                $card = new DefensiveCards($row["EnergyCost"], $row["Name"], $row["Decsription"], $row["Effect"]);
+                $card = new DefensiveCards($row["EnergyCost"], $row["Name"], $row["Description"], $row["Effect"]);
                 $this->AddCard($card);
             }
             ///////
@@ -105,7 +105,7 @@ use Game\Board\ActionsCards\SpecialCards;
             $wynik = mysqli_query($deck_conections, $test);
 
             while ($row = mysqli_fetch_assoc($wynik)) {
-                $card =  new SpecialCards($row["EnergyCost"], $row["Name"], $row["Decsription"], $row["Effect"]);
+                $card =  new SpecialCards($row["EnergyCost"], $row["Name"], $row["Description"], $row["Effect"]);
                 $this->AddCard($card);
             }
             }
@@ -115,7 +115,7 @@ use Game\Board\ActionsCards\SpecialCards;
                 $wynik = mysqli_query($deck_conections, $test);
     
                 while ($row = mysqli_fetch_assoc($wynik)) {
-                $card = new OffensiveCards($row["EnergyCost"], $row["Name"], $row["Decsription"], $row["Effect"]);
+                $card = new OffensiveCards($row["EnergyCost"], $row["Name"], $row["Description"], $row["Effect"]);
                 $this->AddCard($card);
                 }
     
@@ -124,7 +124,7 @@ use Game\Board\ActionsCards\SpecialCards;
                 $wynik = mysqli_query($deck_conections, $test);
     
                 while ($row = mysqli_fetch_assoc($wynik)) {
-                    $card = new DefensiveCards($row["EnergyCost"], $row["Name"], $row["Decsription"], $row["Effect"]);
+                    $card = new DefensiveCards($row["EnergyCost"], $row["Name"], $row["Description"], $row["Effect"]);
                     $this->AddCard($card);
                 }
 
@@ -133,7 +133,7 @@ use Game\Board\ActionsCards\SpecialCards;
                 $wynik = mysqli_query($deck_conections, $test);
     
                 while ($row = mysqli_fetch_assoc($wynik)) {
-                    $card = new SpecialCards($row["EnergyCost"], $row["Name"], $row["Decsription"], $row["Effect"]);
+                    $card = new SpecialCards($row["EnergyCost"], $row["Name"], $row["Description"], $row["Effect"]);
                     $this->AddCard($card);
                 }
             }
@@ -144,7 +144,7 @@ use Game\Board\ActionsCards\SpecialCards;
                 $wynik = mysqli_query($deck_conections, $test);
 
                 while ($row = mysqli_fetch_assoc($wynik)) {
-                    $card = new OffensiveCards($row["EnergyCost"], $row["Name"], $row["Decsription"], $row["Effect"]);
+                    $card = new OffensiveCards($row["EnergyCost"], $row["Name"], $row["Description"], $row["Effect"]);
                     $this->AddCard($card);
                 }
 
@@ -153,7 +153,7 @@ use Game\Board\ActionsCards\SpecialCards;
                 $wynik = mysqli_query($deck_conections, $test);
 
                 while ($row = mysqli_fetch_assoc($wynik)) {
-                    $card = new DefensiveCards($row["EnergyCost"], $row["Name"], $row["Decsription"], $row["Effect"]);
+                    $card = new DefensiveCards($row["EnergyCost"], $row["Name"], $row["Description"], $row["Effect"]);
                     $this->AddCard($card);
                 }
                 ///////
@@ -161,7 +161,7 @@ use Game\Board\ActionsCards\SpecialCards;
                 $wynik = mysqli_query($deck_conections, $test);
 
                 while ($row = mysqli_fetch_assoc($wynik)) {
-                    $card =  new SpecialCards($row["EnergyCost"], $row["Name"], $row["Decsription"], $row["Effect"]);
+                    $card =  new SpecialCards($row["EnergyCost"], $row["Name"], $row["Description"], $row["Effect"]);
                     $this->AddCard($card);
                 }
             }
@@ -172,7 +172,7 @@ use Game\Board\ActionsCards\SpecialCards;
                 $wynik = mysqli_query($deck_conections, $test);
 
                 while ($row = mysqli_fetch_assoc($wynik)) {
-                    $card = new OffensiveCards($row["EnergyCost"], $row["Name"], $row["Decsription"], $row["Effect"]);
+                    $card = new OffensiveCards($row["EnergyCost"], $row["Name"], $row["Description"], $row["Effect"]);
                     $this->AddCard($card);
                 }
 
@@ -181,7 +181,7 @@ use Game\Board\ActionsCards\SpecialCards;
                 $wynik = mysqli_query($deck_conections, $test);
 
                 while ($row = mysqli_fetch_assoc($wynik)) {
-                    $card = new DefensiveCards($row["EnergyCost"], $row["Name"], $row["Decsription"], $row["Effect"]);
+                    $card = new DefensiveCards($row["EnergyCost"], $row["Name"], $row["Description"], $row["Effect"]);
                     $this->AddCard($card);
                 }
                 ///////
@@ -189,7 +189,7 @@ use Game\Board\ActionsCards\SpecialCards;
                 $wynik = mysqli_query($deck_conections, $test);
 
                 while ($row = mysqli_fetch_assoc($wynik)) {
-                    $card =  new SpecialCards($row["EnergyCost"], $row["Name"], $row["Decsription"], $row["Effect"]);
+                    $card =  new SpecialCards($row["EnergyCost"], $row["Name"], $row["Description"], $row["Effect"]);
                     $this->AddCard($card);
                 }
             }
