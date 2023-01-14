@@ -71,7 +71,10 @@ use WinnerWasCalled;
                 Log::info();
                 Log::info("\e[1mPozostało ".$this->Player->GetMana()." Many\e[0m");
                 Log::info();
+                $test=$this->HumanHand+2;
+                if($test<=$this->Player->TEST()){
                 $player->DisplayCards($this->HumanHand);
+                }
                 $eHP = $this->Enemy->GetHp();
                 $pHP = $this->Player->GetHp();
             
@@ -83,7 +86,10 @@ use WinnerWasCalled;
 
                 Log::info("Twoje życie wynosi:  $pHP , A twój DEF: ".$this->Player->GetDEF()) ;
                 Log::info("Życie twojego przeciwnika wynosi:  $eHP, A jego DEF: ".$this->Enemy->GetDEF());
+                $test=$this->HumanHand+2;
+                if($test<=$this->Player->TEST()){
                 $this->HumanHand+=2;
+                }
             }
             if ($eHP <= 0 || $pHP <= 0) {
                 if ($eHP > $pHP) {

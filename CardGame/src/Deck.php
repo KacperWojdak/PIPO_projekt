@@ -17,7 +17,9 @@ use Game\Board\ActionsCards\SpecialCards;
             $this->Type = $type;
         }
 
-        
+         public function Lenght_of_Deck(){
+           return count($this->ListOfCard);
+         }
         public function DisplayDeck(int $num_of_card) {
             for ($i = 0; $i < $num_of_card; $i++) {
                 $int=$i+1;

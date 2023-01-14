@@ -7,7 +7,7 @@ use Game\Board\MainCards\Interfaces\PlayerInterface;
 
 class MainCard implements PlayerInterface { 
 
-    private int $HP = 40;
+    private int $HP = 20;
     private int $DEF = 0;
     private Deck $deck;
     private $type = "";
@@ -17,7 +17,9 @@ class MainCard implements PlayerInterface {
 
     
     
-
+    public function TEST(){
+       return $this->deck->Lenght_of_Deck();
+    }
     public function SetDeck(Deck $deck) {
         $this->deck = $deck;
     }

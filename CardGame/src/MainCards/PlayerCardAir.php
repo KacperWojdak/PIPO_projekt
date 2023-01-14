@@ -5,7 +5,7 @@ namespace  Game\Board\MainCards;
 use Game\Board\MainCards\Interfaces\PlayerInterface;
 
 class PlayerCardAir extends MainCard implements PlayerInterface { 
-    private $HP = 35;
+    private $HP = 15;
     private $deck;
     private $type = "Air";
 
