@@ -3,9 +3,9 @@
 namespace Game\Board\MainCards;
 
 use Game\Board\Deck;
+use Game\Board\MainCards\Interfaces\PlayerInterface;
 
-
-class MainCard { 
+class MainCard implements PlayerInterface{ 
     private int $HP=40;
     private int $DEF=0;
     private Deck $deck;
@@ -43,7 +43,9 @@ class MainCard {
     public function ChangeDEF(int $def){
         $this->DEF=$this->DEF+$def;
     }
-
+    public function GetPlayerType(): string{
+        return $this->type;
+    }
    
 
 }

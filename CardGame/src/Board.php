@@ -3,6 +3,7 @@ namespace Game\Board;
 
 use Game\Board\Log;
 use Game\Board\MainCards\MainCard;
+use Game\Board\MainCards\Interfaces\PlayerInterface;
 use WinnerWasCalled;
 
     class Board {
@@ -67,7 +68,7 @@ use WinnerWasCalled;
                 if($enemy->GetPassive()==1){
                     $attackE=$attackE*2;
                     log::info("Trafenie Krtyczne");
-                    echo "<br>" ;
+                     ;
                 }
                 $this->Player->ChangeDEF(3);
                 $this->Enemy->ChangeDEF(1);
@@ -98,9 +99,9 @@ use WinnerWasCalled;
             $eHP=$this->Enemy->GetHp();
             $pHP=$this->Player->GetHp();
             Log::info("Twoje życie wynosi:  $pHP , A twój DEF: ".$this->Player->GetDEF()) ;
-            echo "<br>" ;
+            
             Log::info("Życie twojego przeciwnika wynosi:  $eHP, A jego DEF: ".$this->Enemy->GetDEF()) ;
-            echo "<br>" ;
+           
             
             
             if($eHP<=0 || $pHP<=0){
