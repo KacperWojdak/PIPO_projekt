@@ -67,9 +67,21 @@ use WinnerWasCalled;
             if ($playerPick == 1){
                 $eHP = $this->Enemy->GetHp();
                 $pHP = $this->Player->GetHp();
+                do{
                 Log::info("Jaką karte chcesz zagrać? ");
                 $CardPick = readline("");
                 $this->Player->USE_CARD_IN_DECK($this->Enemy,$CardPick);
+                $turn=$this->Player->GetDone();
+                if($turn == 0){
+                Log::info("Czy napewno masz odpowiednią karte do zagrania? ");
+                Log::info("1 - tak     2 - nie");
+                $AreYouSure = readline("");
+                if($AreYouSure==2){
+                    $turn=1;
+                    }
+                }
+                }while($turn!=1);
+                
                 if($this->Player->GetDone()==1){
                     $this->HumanHand-=1;
                 }
