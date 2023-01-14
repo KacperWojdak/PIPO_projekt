@@ -24,10 +24,10 @@ class WinnerWasCalled extends Exception{}
 
 <?php
     Log::info("Wybierz swoją talię: ") . PHP_EOL;
-    Log::info("1 - \e[1;34;42mTalia żywiołu wody\e[0m") . PHP_EOL;
-    Log::info("2 - \e[1;31;42mTalia żywiołu ognia\e[0m") . PHP_EOL;
-    Log::info("3 - \e[0;33;42mTalia żywiołu ziemi\e[0m") . PHP_EOL;
-    Log::info("4 - \e[0;37;42mTalia żywiołu powietrza\e[0m") . PHP_EOL;
+    Log::info("1 - Talia żywiołu wody") . PHP_EOL;
+    Log::info("2 - Talia żywiołu ognia") . PHP_EOL;
+    Log::info("3 - Talia żywiołu ziemi") . PHP_EOL;
+    Log::info("4 - Talia żywiołu powietrza") . PHP_EOL;
 
 
         $playerChoose = readline("");
