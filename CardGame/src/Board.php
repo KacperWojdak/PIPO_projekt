@@ -12,6 +12,7 @@ use WinnerWasCalled;
         protected MainCard $Player;
         protected MainCard $Enemy;
         protected $HumanHand = 5;
+        protected $RoboHand = 5;
         protected $Mana = 0;
         protected $TurnCounter = 0;
         protected $winner;
@@ -49,7 +50,12 @@ use WinnerWasCalled;
 
             if (($player->GetPlayerType() == "Water" AND $player->GetPassive() == 1) OR ($enemy->GetPlayerType() == "Water" AND $enemy->GetPassive() == 1)) {
                 $this->Player->ChangeHP(-2);
-                log::info("Wyleczono maga wody o 2 punkty zdrowia");
+                if($player->GetPlayerType() == "Water"){
+                    log::info("Wyleczono gracza  o 2 punkty zdrowia");
+                }
+                if($enemy->GetPlayerType() == "Water"){
+                    log::info("Wyleczono przeciwnika  o 2 punkty zdrowia");
+                }
             }
             $Player_Mana=$this->Mana;
             $this->Player->SetMana($Player_Mana);
