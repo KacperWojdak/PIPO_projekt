@@ -17,9 +17,10 @@ use Game\Board\ActionsCards\SpecialCards;
             $this->Type = $type;
         }
 
-         public function Lenght_of_Deck(){
+        public function lengthOfDeck() {
            return count($this->ListOfCard);
-         }
+        }
+        
         public function DisplayDeck(int $num_of_card) {
             for ($i = 0; $i < $num_of_card; $i++) {
                 $int=$i+1;
@@ -67,7 +68,7 @@ use Game\Board\ActionsCards\SpecialCards;
         }
 
 
-        public function Przetasuj_Deck(){
+        public function ShuffleDeck(){
             shuffle($this->ListOfCard);
         }
         public function PushDeck() {
@@ -80,7 +81,7 @@ use Game\Board\ActionsCards\SpecialCards;
                 return [$energy, $name, $capacity, $value];
             }
     
-        public function CreatDeck() {
+        public function CreateDeck() {
             if ($this->Type == "Fire") {
                 $deck_conections=mysqli_connect('localhost','root','','cards');
                 $test='SELECT * FROM fireattack';
@@ -136,7 +137,62 @@ use Game\Board\ActionsCards\SpecialCards;
                     $this->AddCard($card);
                 }
             }
-            
+
+            if ($this->Type == "Air") {
+                $deck_conections=mysqli_connect('localhost','root','','cards');
+                $test='SELECT * FROM airattack';
+                $wynik = mysqli_query($deck_conections, $test);
+
+                while ($row = mysqli_fetch_assoc($wynik)) {
+                    $card = new OffensiveCards($row["EnergyCost"], $row["Name"], $row["Decsription"], $row["Effect"]);
+                    $this->AddCard($card);
+                }
+
+                /////////
+                $test='SELECT * FROM airdeff';
+                $wynik = mysqli_query($deck_conections, $test);
+
+                while ($row = mysqli_fetch_assoc($wynik)) {
+                    $card = new DefensiveCards($row["EnergyCost"], $row["Name"], $row["Decsription"], $row["Effect"]);
+                    $this->AddCard($card);
+                }
+                ///////
+                $test='SELECT * FROM airspecial';
+                $wynik = mysqli_query($deck_conections, $test);
+
+                while ($row = mysqli_fetch_assoc($wynik)) {
+                    $card =  new SpecialCards($row["EnergyCost"], $row["Name"], $row["Decsription"], $row["Effect"]);
+                    $this->AddCard($card);
+                }
+            }
+
+            if ($this->Type == "Earth") {
+                $deck_conections=mysqli_connect('localhost','root','','cards');
+                $test='SELECT * FROM earthattack';
+                $wynik = mysqli_query($deck_conections, $test);
+
+                while ($row = mysqli_fetch_assoc($wynik)) {
+                    $card = new OffensiveCards($row["EnergyCost"], $row["Name"], $row["Decsription"], $row["Effect"]);
+                    $this->AddCard($card);
+                }
+
+                /////////
+                $test='SELECT * FROM earthdeff';
+                $wynik = mysqli_query($deck_conections, $test);
+
+                while ($row = mysqli_fetch_assoc($wynik)) {
+                    $card = new DefensiveCards($row["EnergyCost"], $row["Name"], $row["Decsription"], $row["Effect"]);
+                    $this->AddCard($card);
+                }
+                ///////
+                $test='SELECT * FROM earthspecial';
+                $wynik = mysqli_query($deck_conections, $test);
+
+                while ($row = mysqli_fetch_assoc($wynik)) {
+                    $card =  new SpecialCards($row["EnergyCost"], $row["Name"], $row["Decsription"], $row["Effect"]);
+                    $this->AddCard($card);
+                }
+            }
         }
 
         public function AddCard(Card $Card) {

@@ -27,9 +27,6 @@ use WinnerWasCalled;
             return $this->winner;
         }
 
-       
-
-
         public function PlayTurn() {
 
             Log::info();
@@ -50,17 +47,17 @@ use WinnerWasCalled;
 
             if (($player->GetPlayerType() == "Water" AND $player->GetPassive() == 1) OR ($enemy->GetPlayerType() == "Water" AND $enemy->GetPassive() == 1)) {
                 $this->Player->ChangeHP(-2);
-                if($player->GetPlayerType() == "Water"){
+                if ($player->GetPlayerType() == "Water") {
                     log::info("Wyleczono gracza  o 2 punkty zdrowia");
                 }
-                if($enemy->GetPlayerType() == "Water"){
+                if ($enemy->GetPlayerType() == "Water") {
                     log::info("Wyleczono przeciwnika  o 2 punkty zdrowia");
                 }
             }
             $Player_Mana=$this->Mana;
             $this->Player->SetMana($Player_Mana);
             $this->Enemy->SetMana($Player_Mana);
-            do{
+            do {
             Log::info("Czy chcesz zagrać kartę? ");
             Log::info("1 - tak; 0 - nie");
             $playerPick = readline("");
@@ -73,7 +70,7 @@ use WinnerWasCalled;
                 $CardPick = readline("");
                 $this->Player->USE_CARD_IN_DECK($this->Enemy,$CardPick);
                 $turn=$this->Player->GetDone();
-                if($turn == 0){
+                if ($turn == 0) {
                     Log::info("Czy napewno masz odpowiednią karte do zagrania? ");
                     Log::info("1 - tak     2 - nie");
                     $AreYouSure = readline("");
@@ -81,16 +78,16 @@ use WinnerWasCalled;
                         $turn = 1;
                         }
                 }
-                } while ($turn!=1);
+                } while ($turn != 1);
                 Log::info("Przeciwnik :");
                 do {
                     $robochoice = random_int(1,$this->RoboHand);
                     $this->Enemy->USE_CARD_IN_DECK($this->Enemy, $robochoice);
                     $Enemyturn = $this->Enemy->GetDone();
                     if ($turn == 0) {
-                        $AreYouSure=random_int(1, 2);
+                        $AreYouSure = random_int(1, 2);
                     if ($AreYouSure == 2) {
-                        $Enemyturn=1;
+                        $Enemyturn = 1;
                         }
                     }
                     } while ($Enemyturn != 1);
@@ -112,8 +109,8 @@ use WinnerWasCalled;
                 if ($Playertest <= $this->Player->TEST()) {
                 $player->DisplayCards($this->HumanHand);
                 }
-                    $Enemytest = $this->RoboHand+2;
-                if ($Enemytest<=$this->Enemy->TEST()) {
+                    $Enemytest = $this->RoboHand + 2;
+                if ($Enemytest <= $this->Enemy->TEST()) {
                     $enemy->DisplayCards($this->RoboHand);
                 }
                 $eHP = $this->Enemy->GetHp();
@@ -137,10 +134,10 @@ use WinnerWasCalled;
                     $this->winner = "Przeciwnik";
 				    throw new WinnerWasCalled();
                 }
-                if($pHP > $eHP){
+                if ($pHP > $eHP) {
                     $this->winner = "Gracz";
                     throw new WinnerWasCalled();
-                    }
+                }
             };
         }
     }
