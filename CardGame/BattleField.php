@@ -8,6 +8,7 @@ use Game\Board\MainCards\PlayerCardAir;
 use Game\Board\MainCards\PlayerCardFire;
 use Game\Board\MainCards\PlayerCardEarth;
 use Game\Board\MainCards\PlayerCardWater;
+use Game\Board\MainCards\Interfaces\PlayerInterface;
 
 class WinnerWasCalled extends Exception{}
 
@@ -24,10 +25,10 @@ class WinnerWasCalled extends Exception{}
 
 <?php
     Log::info("Wybierz swoją talię: ") . PHP_EOL;
-    Log::info("1 - Talia żywiołu wody") . PHP_EOL;
-    Log::info("2 - Talia żywiołu ognia") . PHP_EOL;
-    Log::info("3 - Talia żywiołu ziemi") . PHP_EOL;
-    Log::info("4 - Talia żywiołu powietrza") . PHP_EOL;
+    Log::info("1 - \e[34mTalia żywiołu wody\e[0m") . PHP_EOL;
+    Log::info("2 - \e[91mTalia żywiołu ognia\e[0m") . PHP_EOL;
+    Log::info("3 - \e[92mTalia żywiołu ziemi\e[0m") . PHP_EOL;
+    Log::info("4 - \e[33mTalia żywiołu powietrza\e[0m") . PHP_EOL;
 
 
         $playerChoose = readline("");
