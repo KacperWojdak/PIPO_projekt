@@ -30,36 +30,36 @@ use Game\Board\ActionsCards\SpecialCards;
 
                 if ($card_of_deck instanceof DefensiveCards) {
                     if ($card_of_deck->getCapacity() == 1) {
-                        $efect="Zwiększ obronę o ";
+                        $efect="Increase your defense by ";
                     }
                     if($card_of_deck->getCapacity() == 2) {
-                        $efect="Wylecz o ";   
+                        $efect="Heal by ";   
                     }
                     $value = $card_of_deck->getValue() ;
                     Log::info("\e[32m".$int."- [".$energy."] ".$name." - (".$efect.$value.")\e[0m");
                 }
 
                 if ($card_of_deck instanceof OffensiveCards) {
-                    $efect = "Zadaj obrażenia o wartośći ";
+                    $efect = "Deal amount of damge ";
                     $value = $card_of_deck->getValue();
                     Log::info("\e[31m".$int."- [".$energy."] ".$name." - (".$efect.$value.")\e[0m");
                 }
 
                 if ($card_of_deck instanceof SpecialCards) {
                     if ($card_of_deck->getCapacity() == 1) {
-                        $efect = "Dobierz karty : ";
+                        $efect = "Draw cards : ";
                         $value = $card_of_deck->getValue();
                     }
                     if ($card_of_deck->getCapacity() == 2) {
-                        $efect = "Nic nie robi ";   
+                        $efect = "Do nothing ";   
                         $value = "";
                     }
                     if ($card_of_deck->getCapacity() == 3) {
-                        $efect = "Przetasuj talię ";
+                        $efect = "Shuffle deck ";
                         $value = "";
                     }
                     if ($card_of_deck->getCapacity() == 4) {
-                        $efect = "Odnów Manę o ";  
+                        $efect = "Restore Mana by ";  
                         $value = $card_of_deck->getValue(); 
                     }
                     Log::info("\e[35m".$int."- [".$energy."] ".$name." - (".$efect.$value.")\e[0m");

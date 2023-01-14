@@ -13,11 +13,11 @@ use Game\Board\MainCards\Interfaces\PlayerInterface;
 class WinnerWasCalled extends Exception{}
 
 
-    Log::info("Wybierz swoją talię: ") . PHP_EOL;
-    Log::info("1 - \e[34mTalia żywiołu wody\e[0m") . PHP_EOL;
-    Log::info("2 - \e[91mTalia żywiołu ognia\e[0m") . PHP_EOL;
-    Log::info("3 - \e[92mTalia żywiołu ziemi\e[0m") . PHP_EOL;
-    Log::info("4 - \e[33mTalia żywiołu powietrza\e[0m") . PHP_EOL;
+    Log::info("Choose your deck: ") . PHP_EOL;
+    Log::info("1 - \e[34mWater Elemental Deck\e[0m") . PHP_EOL;
+    Log::info("2 - \e[91mFire Elemental Deck\e[0m") . PHP_EOL;
+    Log::info("3 - \e[92mAir Elemental Deck\e[0m") . PHP_EOL;
+    Log::info("4 - \e[33mEarth Elemental Deck\e[0m") . PHP_EOL;
 
 
         $playerChoose = readline("");
@@ -34,7 +34,7 @@ class WinnerWasCalled extends Exception{}
                 $playerChoose = new PlayerCardAir;
             }
 
-    Log::info("Wybierz talię przeciwnika: ") . PHP_EOL;
+    Log::info("Choose opponent's deck: ") . PHP_EOL;
         $enemyChoose = readline("");
 
         if ($enemyChoose == 1) {
@@ -68,7 +68,7 @@ class WinnerWasCalled extends Exception{}
         }
         catch (WinnerWasCalled $exception) {
             Log::info();
-            Log::info($board->GetWinner() . " wygrał.");
+            Log::info($board->GetWinner() . " won.");
         }
 ?>
 
