@@ -65,54 +65,56 @@ use WinnerWasCalled;
             Log::info("1 - tak; 0 - nie");
             $playerPick = readline("");
 
-            if ($playerPick == 1){
+            if ($playerPick == 1) {
                 $eHP = $this->Enemy->GetHp();
                 $pHP = $this->Player->GetHp();
-                do{
+                do {
                 Log::info("Jaką karte chcesz zagrać? ");
                 $CardPick = readline("");
                 $this->Player->USE_CARD_IN_DECK($this->Enemy,$CardPick);
                 $turn=$this->Player->GetDone();
                 if($turn == 0){
-                Log::info("Czy napewno masz odpowiednią karte do zagrania? ");
-                Log::info("1 - tak     2 - nie");
-                $AreYouSure = readline("");
-                if($AreYouSure==2){
-                    $turn=1;
-                    }
+                    Log::info("Czy napewno masz odpowiednią karte do zagrania? ");
+                    Log::info("1 - tak     2 - nie");
+                    $AreYouSure = readline("");
+                    if ($AreYouSure == 2){
+                        $turn = 1;
+                        }
                 }
-                }while($turn!=1);
+                } while ($turn!=1);
                 Log::info("Przeciwnik :");
-                do{
-                    $robochoice=random_int(1,$this->RoboHand);
-                    $this->Enemy->USE_CARD_IN_DECK($this->Enemy,$robochoice);
-                    $Enemyturn=$this->Enemy->GetDone();
-                    if($turn == 0){
-                        $AreYouSure=random_int(1,2);
-                    if($AreYouSure==2){
+                do {
+                    $robochoice = random_int(1,$this->RoboHand);
+                    $this->Enemy->USE_CARD_IN_DECK($this->Enemy, $robochoice);
+                    $Enemyturn = $this->Enemy->GetDone();
+                    if ($turn == 0) {
+                        $AreYouSure=random_int(1, 2);
+                    if ($AreYouSure == 2) {
                         $Enemyturn=1;
                         }
                     }
-                    }while($Enemyturn!=1);
+                    } while ($Enemyturn != 1);
                 
-                if($this->Player->GetDone()==1){
-                    $this->HumanHand-=1;
+                if ($this->Player->GetDone() == 1) {
+                    $this->HumanHand -= 1;
                 }
-                if($this->Enemy->GetDone()==1){
-                    $this->RoboHand-=1;
+                if ($this->Enemy->GetDone() == 1) {
+                    $this->RoboHand -= 1;
                 }
-                $this->HumanHand+=$this->Player->GetHand();
-                $this->RoboHand+=$this->Enemy->GetHand();
+
+                $this->HumanHand += $this->Player->GetHand();
+                $this->RoboHand += $this->Enemy->GetHand();
                 Log::info();
                 Log::info("\e[1mPozostało ".$this->Player->GetMana()." Many\e[0m");
                 Log::info();
-                $Playertest=$this->HumanHand+2;
-                if($Playertest<=$this->Player->TEST()){
+                $Playertest = $this->HumanHand + 2;
+
+                if ($Playertest <= $this->Player->TEST()) {
                 $player->DisplayCards($this->HumanHand);
                 }
-                $Enemytest=$this->RoboHand+2;
-                if($Enemytest<=$this->Enemy->TEST()){
-                $enemy->DisplayCards($this->RoboHand);
+                    $Enemytest = $this->RoboHand+2;
+                if ($Enemytest<=$this->Enemy->TEST()) {
+                    $enemy->DisplayCards($this->RoboHand);
                 }
                 $eHP = $this->Enemy->GetHp();
                 $pHP = $this->Player->GetHp();
@@ -126,8 +128,8 @@ use WinnerWasCalled;
                 Log::info("Twoje życie wynosi:  $pHP , A twój DEF: ".$this->Player->GetDEF()) ;
                 Log::info("Życie twojego przeciwnika wynosi:  $eHP, A jego DEF: ".$this->Enemy->GetDEF());
                 $test=$this->HumanHand+2;
-                if($test<=$this->Player->TEST()){
-                $this->HumanHand+=2;
+                if ($test<=$this->Player->TEST()) {
+                    $this->HumanHand += 2;
                 }
             }
             if ($eHP <= 0 || $pHP <= 0) {

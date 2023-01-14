@@ -145,34 +145,34 @@ use Game\Board\ActionsCards\SpecialCards;
         }
 
         public function CHOICE_CARD(int $nr){
-            $chocie=$this->ListOfCard[$nr];
-            if($chocie instanceof DefensiveCards){
-                $value=$chocie->getValue();
-                $energy=$chocie->getEnergyCost();
-                $description=$chocie->getCapacity();
+            $choice=$this->ListOfCard[$nr];
+            if($choice instanceof DefensiveCards){
+                $value=$choice->getValue();
+                $energy=$choice->getEnergyCost();
+                $description=$choice->getCapacity();
                 $deff=[2,$value,$description,$energy];
                 return $deff;
                 
             }
-            if($chocie instanceof SpecialCards){
-                $value=$chocie->getValue();
-                $description=$chocie->getCapacity();
-                $energy=$chocie->getEnergyCost();
-                $special=[3,$value,$description,$energy];
+            if ($choice instanceof SpecialCards) {
+                $value = $choice->getValue();
+                $description = $choice->getCapacity();
+                $energy = $choice->getEnergyCost();
+                $special = [3, $value, $description, $energy];
                 return $special;
                 
             }
-            if($chocie instanceof OffensiveCards){
-                $value=$chocie->getValue();
-                $description=1;
-                $energy=$chocie->getEnergyCost();
-                $attack=[1,$value,1,$energy];
+            if ($choice instanceof OffensiveCards) {
+                $value = $choice->getValue();
+                $description = 1;
+                $energy = $choice->getEnergyCost();
+                $attack = [1, $value, 1, $energy];
                 return $attack;
                 
             }
         }
-        public function DELTE_CARD(int $nr){
-            array_splice($this->ListOfCard,$nr,1);
+        public function DELTE_CARD(int $nr) {
+            array_splice($this->ListOfCard, $nr, 1);
         }
     }
 ?>
