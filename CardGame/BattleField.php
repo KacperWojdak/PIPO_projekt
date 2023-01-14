@@ -74,13 +74,13 @@ class WinnerWasCalled extends Exception{}
         
 
 
-        $you->SetDeck($playerDeck);
-        $notyou->SetDeck($enemyDeck);
+        $playerChoose->SetDeck($playerDeck);
+        $enemyChoose->SetDeck($enemyDeck);
 
         
 
 
-        $board= new Board($you,$notyou);
+        $board= new Board($playerChoose,$enemyChoose);
         $board->Set_up_Game();
         try {
             while(true) {
