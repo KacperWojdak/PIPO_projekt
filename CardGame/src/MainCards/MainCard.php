@@ -11,8 +11,9 @@ class MainCard {
     private Deck $deck;
     private $type="";
 
-    public function GetPlayerType(): string{
-        return $this->type;
+    
+    public function SetDeck(Deck $deck){
+        $this->deck=$deck;
     }
     public function GetPassive(): int{
         return 1;

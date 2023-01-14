@@ -7,6 +7,7 @@ use Game\Board\MainCards\Interfaces\PlayerInterface;
 class PlayerCardEarth extends MainCard implements PlayerInterface{
     private $HP=20;
     private $deck;
+    private $type="Earth";
 
 
     public function GetPassive(): int{
@@ -14,10 +15,10 @@ class PlayerCardEarth extends MainCard implements PlayerInterface{
     }
 
     
-
     public function GetPlayerType(): string{
-        return "Fire";
+        return $this->type;
     }
+   
 
 }
 ?>

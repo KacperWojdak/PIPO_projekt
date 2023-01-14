@@ -3,7 +3,7 @@
 namespace Game\Board;
 
     abstract class Card {
-        private $NameOfCard;
+        private $NameOfCard="";
         private $EnergyCost=0;
         private $type="";
         private $Value;

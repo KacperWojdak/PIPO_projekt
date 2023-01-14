@@ -7,7 +7,7 @@ use Game\Board\MainCards\Interfaces\PlayerInterface;
 class PlayerCardAir extends MainCard implements PlayerInterface { 
     private $HP=35;
     private $deck;
-    private $type="Fire";
+    private $type="Air";
 
     public function GetDeck(){
 
@@ -23,6 +23,9 @@ class PlayerCardAir extends MainCard implements PlayerInterface {
             return 0;
         }
         
+    }
+    public function GetPlayerType(): string{
+        return $this->type;
     }
     
 }

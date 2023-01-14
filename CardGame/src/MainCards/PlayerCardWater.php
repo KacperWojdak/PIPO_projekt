@@ -17,6 +17,9 @@ class PlayerCardWater extends MainCard implements PlayerInterface {
             return 0;
         }
     }
+    public function GetPlayerType(): string{
+        return $this->type;
+    }
     }
 
 
