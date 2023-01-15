@@ -79,6 +79,17 @@ use WinnerWasCalled;
                     }
                 }
                 } while ($turn != 1);
+                if ($eHP <= 0 || $pHP <= 0) {
+                    if ($eHP > $pHP) {
+                        $this->winner = "Opponent";
+                        throw new WinnerWasCalled();
+                    }
+                    if ($pHP > $eHP) {
+                        $this->winner = "Player";
+                        throw new WinnerWasCalled();
+                    }
+                };
+                
                 $playerPick = 0;
                 Log::info("Enemy: ");
                 do {
