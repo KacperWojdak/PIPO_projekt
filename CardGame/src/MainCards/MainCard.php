@@ -5,7 +5,7 @@ use Game\Board\Log;
 use Game\Board\Deck;
 use Game\Board\MainCards\Interfaces\PlayerInterface;
 
-class MainCard implements PlayerInterface { 
+abstract  class MainCard implements PlayerInterface { 
 
     private int $HP = 20;
     private int $DEF = 0;
