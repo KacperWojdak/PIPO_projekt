@@ -38,7 +38,7 @@ use WinnerWasCalled;
                 $this->Mana++;
             };
         
-            Log::info("\e[1mYou have $this->Mana\e[0mMana") ;
+            Log::info("\e[1mYou have $this->Mana\e[0m Mana") ;
             Log::info();
         
             $this->Player->DisplayCards($this->HumanHand);
@@ -61,10 +61,10 @@ use WinnerWasCalled;
             Log::info("Do you want to play a card? ");
             Log::info("1 - yes; 0 - no");
             $playerPick = readline("");
+            $eHP = $this->Enemy->GetHp();
+            $pHP = $this->Player->GetHp();
 
             if ($playerPick == 1) {
-                $eHP = $this->Enemy->GetHp();
-                $pHP = $this->Player->GetHp();
                 do {
                 Log::info("Which card? ");
                 $CardPick = readline("");
@@ -76,13 +76,14 @@ use WinnerWasCalled;
                     $AreYouSure = readline("");
                     if ($AreYouSure == 2){
                         $turn = 1;
-                        }
+                    }
                 }
                 } while ($turn != 1);
+                $playerPick = 0;
                 Log::info("Enemy: ");
                 do {
                     $robochoice = random_int(1,$this->RoboHand);
-                    $this->Enemy->USE_CARD_IN_DECK($this->Enemy, $robochoice);
+                    $this->Enemy->USE_CARD_IN_DECK($this->Player, $robochoice);
                     $Enemyturn = $this->Enemy->GetDone();
                     if ($turn == 0) {
                         $AreYouSure = random_int(1, 2);
