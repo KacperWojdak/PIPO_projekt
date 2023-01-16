@@ -16,8 +16,8 @@ class WinnerWasCalled extends Exception{}
     Log::info("Choose your deck: ") . PHP_EOL;
     Log::info("1 - \e[34mWater Elemental Deck\e[0m") . PHP_EOL;
     Log::info("2 - \e[91mFire Elemental Deck\e[0m") . PHP_EOL;
-    Log::info("3 - \e[92mAir Elemental Deck\e[0m") . PHP_EOL;
-    Log::info("4 - \e[33mEarth Elemental Deck\e[0m") . PHP_EOL;
+    Log::info("3 - \e[33mAir Elemental Deck\e[0m") . PHP_EOL;
+    Log::info("4 - \e[92mEarth Elemental Deck\e[0m") . PHP_EOL;
 
 
         $playerChoose = readline("");
