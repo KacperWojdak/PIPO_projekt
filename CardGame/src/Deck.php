@@ -40,7 +40,7 @@ use Game\Board\ActionsCards\SpecialCards;
                 }
 
                 if ($card_of_deck instanceof OffensiveCards) {
-                    $efect = "Deal amount of damge ";
+                    $efect = "Deal amount of damage ";
                     $value = $card_of_deck->getValue();
                     Log::info("\e[31m".$int."- [".$energy."] ".$name." - (".$efect.$value.")\e[0m");
                 }
