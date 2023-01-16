@@ -59,10 +59,9 @@ use WinnerWasCalled;
             $this->Enemy->SetMana($Player_Mana);
             do {
             Log::info("Do you want to play a card? ");
-            Log::info("1 - yes; 0 - no");
+            Log::info("1 - yes; 2 - no");
             $playerPick = readline("");
-            $eHP = $this->Enemy->GetHp();
-            $pHP = $this->Player->GetHp();
+          
 
             if ($playerPick == 1) {
                 do {
@@ -79,6 +78,8 @@ use WinnerWasCalled;
                     }
                 }
                 } while ($turn != 1);
+                $eHP = $this->Enemy->GetHp();
+                $pHP = $this->Player->GetHp();
                 if ($eHP <= 0 || $pHP <= 0) {
                     if ($eHP > $pHP) {
                         $this->winner = "Opponent";
@@ -90,7 +91,7 @@ use WinnerWasCalled;
                     }
                 };
                 
-                $playerPick = 0;
+                $playerPick = 3;
                 Log::info("Enemy: ");
                 do {
                     $robochoice = random_int(1,$this->RoboHand);
@@ -129,8 +130,25 @@ use WinnerWasCalled;
                 $pHP = $this->Player->GetHp();
             
             }
-            } while($playerPick != 0);
-            if ($playerPick == 0) {
+            } while($playerPick != 2);
+            if($playerPick==2){
+                Log::info("Enemy: ");
+                do {
+                    $robochoice = random_int(1,$this->RoboHand);
+                    $this->Enemy->USE_CARD_IN_DECK($this->Player, $robochoice);
+                    $Enemyturn = $this->Enemy->GetDone();
+                    if ($Enemyturn == 0) {
+                        $AreYouSure = random_int(1, 2);
+                    if ($AreYouSure == 2) {
+                        Log::info(" Pass ");
+                        $Enemyturn = 1;
+                        }
+                    }
+                    } while ($Enemyturn != 1);
+                    $playerPick=3;
+            }
+            if ($playerPick == 3) {
+                
                 $eHP = $this->Enemy->GetHp();
                 $pHP = $this->Player->GetHp();
 
