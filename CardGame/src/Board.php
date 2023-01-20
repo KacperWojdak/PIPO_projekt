@@ -94,12 +94,13 @@ use WinnerWasCalled;
                 $playerPick = 3;
                 Log::info("Enemy: ");
                 do {
-                    $robochoice = random_int(1,$this->RoboHand);
+                    $robochoice = random_int(1, $this->RoboHand);
                     $this->Enemy->USE_CARD_IN_DECK($this->Player, $robochoice);
                     $Enemyturn = $this->Enemy->GetDone();
-                    if ($turn == 0) {
+                    if ($Enemyturn == 0) {
                         $AreYouSure = random_int(1, 2);
                     if ($AreYouSure == 2) {
+                        log::info("Pass");
                         $Enemyturn = 1;
                         }
                     }
@@ -140,11 +141,15 @@ use WinnerWasCalled;
                     if ($Enemyturn == 0) {
                         $AreYouSure = random_int(1, 2);
                     if ($AreYouSure == 2) {
-                        Log::info(" Pass ");
+                        Log::info("Pass");
                         $Enemyturn = 1;
                         }
                     }
                     } while ($Enemyturn != 1);
+                    if ($this->Enemy->GetDone() == 1) {
+                        $this->RoboHand -= 1;
+                    }
+    
                     $playerPick=3;
             }
             if ($playerPick == 3) {
@@ -157,6 +162,10 @@ use WinnerWasCalled;
                 $test=$this->HumanHand+2;
                 if ($test<=$this->Player->TEST()) {
                     $this->HumanHand += 2;
+                }
+                $test=$this->RoboHand+2;
+                if ($test<=$this->Enemy->TEST()) {
+                    $this->RoboHand += 2;
                 }
             }
             if ($eHP <= 0 || $pHP <= 0) {
